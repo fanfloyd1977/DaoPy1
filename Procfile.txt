@@ -1,1 +1,1 @@
-worker: python MyForthBot.py
+worker: python Bot.py
