@@ -1,8 +1,34 @@
 import os
-from flask import Flask
+from flask import Flask, jsonify
+
 app = Flask(__name__)
-@app.route("/")
+
+data = [
+    {
+        "id": 1,
+        "library": "Pandas",
+        "language": "Python"
+    },
+    {
+        "id": 2,
+        "library": "requests",
+        "language": "Python"
+    },
+    {
+        "id": 3,
+        "library": "NumPy",
+        "language": "Python"
+    }
+]
+
+@app.route('/')
 def hello():
-    return "Hello Dao World!"
+    return "Hello DAO DAO DAo Flask-Heroku"
+
+
+@app.route('/api', methods=['GET'])
+def get_api():
+    return jsonify(data)
+
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=False)
