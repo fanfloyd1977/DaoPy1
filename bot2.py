@@ -7,8 +7,8 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('1655584117')
-handler = WebhookHandler('4088552f2e9ee28de065d9bddce75ab2')
+line_bot_api = LineBotApi("1655584117")
+handler = WebhookHandler("4088552f2e9ee28de065d9bddce75ab2")
 user_profile = "far"
 
 @app.route("/")
@@ -41,7 +41,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(
+    line_bot_api.push_message(
         event.reply_token,
         TextSendMessage(text="hello world"))
 
