@@ -1,2 +1,2 @@
 heroku ps:scale worker=1
-web: gunicorn MyForthBot:app
+web: gunicorn bot:app
