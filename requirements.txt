@@ -4,3 +4,4 @@ playsound~=1.2.2
 gTTS~=2.2.1
 ipywidgets
 gunicorn==20.0.4
+future~=0.18.2
