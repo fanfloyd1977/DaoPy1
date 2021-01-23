@@ -41,7 +41,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    line_bot_api.push_message(
+    line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text="hello world"))
 
