@@ -8,7 +8,7 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 app = Flask(__name__)
 
 line_bot_api = LineBotApi("1655584117")
-handler = WebhookHandler("4088552f2e9ee28de065d9bddce75ab2")
+handler = WebhookHandler("")
 
 @app.route("/callback", methods=["POST"])
 def callback():
@@ -30,4 +30,5 @@ def handle_message(event):
 
 
 if __name__ == "__main__":
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
