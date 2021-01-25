@@ -6,3 +6,4 @@ ipywidgets
 gunicorn==20.0.4
 future~=0.18.2
 line-bot-sdk~=1.18.0
+requests
