@@ -6,8 +6,8 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 
-from chatterbot import ChatBot
-from chatterbot.trainers import ListTrainer
+#from chatterbot import ChatBot
+#from chatterbot.trainers import ListTrainer
 
 app = Flask(__name__)
 
