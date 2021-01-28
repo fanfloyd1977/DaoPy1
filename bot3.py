@@ -1,6 +1,9 @@
 import os
 from flask import Flask, request, abort
+import xlrd
 
+book = xlrd.open_workbook("~$Book.xlsx")
+sheet = book.sheet_by_index(0)
 
 
 from linebot import LineBotApi, WebhookHandler
@@ -34,13 +37,14 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 
-        if event.message.text == "Hello":
-            reply_text = "Hi Dao"
+
+        if event.message.text == sheet.cell_value(0,0):
+            reply_text = sheet.cell_value(0,1)
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
         if event.message.text == "name?":
-            reply_text = "Hi, I'm Miss Lee"
+            reply_text = "Hi, I'm Miss Lee. Nice to meet u"
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
