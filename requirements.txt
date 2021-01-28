@@ -7,3 +7,5 @@ gunicorn==20.0.4
 future~=0.18.2
 line-bot-sdk~=1.18.0
 chatbot
+xlrd~=2.0.1
+db~=0.1.1
