@@ -26,7 +26,7 @@ address = ["Nanotec thai",
             "74/74 ชูชาติอนุสรณ์ 7 เลี่ยงเมืองปากเกร็ด 46 ตำบลบางตลาด อำเภอ ปากเกร็ด นนทบุรี 11120"
             "Home non eng",
             "74/74 Chuchat Anuson 7,Liang mueang pak kret 46,Bang Talat, Pak Kret District, Nonthaburi, 11120"]
-Miss_Lee = ["Miss Lee", "Shoot me in the heart", "Miss u", "https://www.youtube.com/watch?v=yJCzZqrWIzY"
+Miss_Lee = ["Miss Lee", "Shoot me in the heart", "Miss u", "https://www.youtube.com/watch?v=yJCzZqrWIzY"]
 
 @app.route("/")
 
