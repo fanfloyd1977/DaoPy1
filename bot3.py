@@ -26,7 +26,7 @@ address = ["Nanotec thai",
             "74/74 ชูชาติอนุสรณ์ 7 เลี่ยงเมืองปากเกร็ด 46 ตำบลบางตลาด อำเภอ ปากเกร็ด นนทบุรี 11120"
             "Home non eng",
             "74/74 Chuchat Anuson 7,Liang mueang pak kret 46,Bang Talat, Pak Kret District, Nonthaburi, 11120"]
-
+Miss_Lee = ["Miss Lee", "Shoot me in the heart", "Miss u", "https://www.youtube.com/watch?v=yJCzZqrWIzY"
 
 @app.route("/")
 
@@ -48,40 +48,63 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-
+#Greetings_1
         if event.message.text == "Hi":
             reply_text = "Hi Dao"
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
+#Greetings_2
         if event.message.text == "Name?":
             reply_text = "Hi, I'm Miss Lee. Nice to meet u"
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
+#Greetings_3
         if event.message.text == greeting[0]:
             value1 = randrange(1, len(greeting))
             reply_text = greeting[value1]
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=reply_text))
+#Emo_1
         if event.message.text == emo[0] or event.message.text == emo[1]:
             value2 = randrange(2, len(emo))
             reply_text = emo[value2]
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=reply_text))
+#Address_1
         if event.message.text == address[0]:
             reply_text = address[1]
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=reply_text))
+#Address_2
         if event.message.text == address[2]:
             reply_text = address[3]
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=reply_text))
-
+#Address_3
+        if event.message.text == address[4]:
+            reply_text = address[5]
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=reply_text))
+#Address_4
+        if event.message.text == address[6]:
+            reply_text = address[7]
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=reply_text))
+#Miss Lee
+        if event.message.text == Miss_Lee[0] or event.message.text == Miss_Lee[1]:
+            value2 = randrange(2, len(Miss_Lee))
+            reply_text = Miss_Lee[value2]
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=reply_text))
 
 if __name__ == "__main__":
     app.run()
