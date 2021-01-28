@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, abort
 import xlrd
 
-book = xlrd.open_workbook("~$Book.xlsx")
+book = xlrd.open_workbook("Book.xlsx")
 sheet = book.sheet_by_index(0)
 
 
@@ -43,7 +43,7 @@ def handle_message(event):
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
-        if event.message.text == "name?":
+        if event.message.text == "Name?":
             reply_text = "Hi, I'm Miss Lee. Nice to meet u"
             line_bot_api.reply_message(
             event.reply_token,
