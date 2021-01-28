@@ -1,4 +1,5 @@
 import os
+from random import randrange
 from flask import Flask, request, abort
 
 from linebot import LineBotApi, WebhookHandler
@@ -10,7 +11,14 @@ app = Flask(__name__)
 line_bot_api = LineBotApi("ziev+1/ECWJDjw1CkOPjOMofjQ5mft0H0XtZknC/Vu+KnGZzi+2vFVF34UiX+QOdh4JADi+j/xeyPeSiGjyhnvTvKjNijstiixgQeY77aBxJ7R0B8TS/BMCG/y8KheHMwAZ7TJFKN6i5UPBoRzm2BQdB04t89/1O/w1cDnyilFU=")
 handler = WebhookHandler("4088552f2e9ee28de065d9bddce75ab2")
 
-dict = ["Hello", "Hi, Dao :)", "How are you?", "I'm happy and u?"]
+greeting = ["Hello",
+            "Hi, Dao :)", "Hi, There!", "Howdy", "สวัสดีครับ"]
+value1 = randrange(1, len(greeting))
+
+emo = ["How are you?", "how r u?",
+       "Im fine, Thanks you and you", "I want to fly away", "Someday, I will fly", "I'm doing well", "I miss you"]
+value2 = randrange(2, len(emo))
+
 
 
 @app.route("/")
@@ -44,13 +52,13 @@ def handle_message(event):
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
-        if event.message.text == dict[0]:
-            reply_text = dict[1]
+        if event.message.text == greeting[0]:
+            reply_text = greeting[value1]
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=reply_text))
-        if event.message.text == dict[2]:
-            reply_text = dict[3]
+        if event.message.text == emo[0] or event.message.text == emo[1]:
+            reply_text = emo[value2]
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=reply_text))
