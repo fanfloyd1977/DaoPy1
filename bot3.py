@@ -1,10 +1,5 @@
 import os
 from flask import Flask, request, abort
-import xlrd
-
-book = xlrd.open_workbook("Book.xlsx")
-sheet = book.sheet_by_index(0)
-
 
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
@@ -14,6 +9,8 @@ app = Flask(__name__)
 
 line_bot_api = LineBotApi("ziev+1/ECWJDjw1CkOPjOMofjQ5mft0H0XtZknC/Vu+KnGZzi+2vFVF34UiX+QOdh4JADi+j/xeyPeSiGjyhnvTvKjNijstiixgQeY77aBxJ7R0B8TS/BMCG/y8KheHMwAZ7TJFKN6i5UPBoRzm2BQdB04t89/1O/w1cDnyilFU=")
 handler = WebhookHandler("4088552f2e9ee28de065d9bddce75ab2")
+
+dict = ["Hello", "Hi, Dao :)", "How are you?", "I'm happy and u?"]
 
 
 @app.route("/")
@@ -37,9 +34,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 
-
-        if event.message.text == sheet.cell_value(0,0):
-            reply_text = sheet.cell_value(0,1)
+        if event.message.text == "Hi":
+            reply_text = "Hi Dao"
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
@@ -48,6 +44,18 @@ def handle_message(event):
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
+        if event.message.text == dict[0]:
+            reply_text = dict[1]
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=reply_text))
+        if event.message.text == dict[2]:
+            reply_text = dict[3]
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=reply_text))
+
+
 
 
 if __name__ == "__main__":
