@@ -17,7 +17,7 @@ value1 = randrange(1, len(greeting))
 
 emo = ["How are you?", "how r u?",
        "Im fine, Thanks you and you", "I want to fly away", "Someday, I will fly", "I'm doing well", "I miss you"]
-value2 = randrange(2, len(emo))
+#value2 = randrange(2, len(emo))
 
 
 
@@ -58,6 +58,7 @@ def handle_message(event):
                 event.reply_token,
                 TextSendMessage(text=reply_text))
         if event.message.text == emo[0] or event.message.text == emo[1]:
+            value2 = randrange(2, len(emo))
             reply_text = emo[value2]
             line_bot_api.reply_message(
                 event.reply_token,
