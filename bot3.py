@@ -11,8 +11,7 @@ app = Flask(__name__)
 line_bot_api = LineBotApi("ziev+1/ECWJDjw1CkOPjOMofjQ5mft0H0XtZknC/Vu+KnGZzi+2vFVF34UiX+QOdh4JADi+j/xeyPeSiGjyhnvTvKjNijstiixgQeY77aBxJ7R0B8TS/BMCG/y8KheHMwAZ7TJFKN6i5UPBoRzm2BQdB04t89/1O/w1cDnyilFU=")
 handler = WebhookHandler("4088552f2e9ee28de065d9bddce75ab2")
 
-greeting = ["Hello",
-            "Hi, Dao :)", "Hi, There!", "Howdy", "สวัสดีครับ"]
+greeting = ["Hello", "Hi, Dao :)", "Hi, There!", "Howdy", "สวัสดีครับ"]
 
 
 emo = ["How are you?", "how r u?",
@@ -50,8 +49,9 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 #Greetings_1
-        if event.message.text == "Hi":
-            reply_text = "Hi Dao"
+        if event.message.text in greeting:
+            value = randrange(0, len(greeting))
+            reply_text = greeting[value]
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
