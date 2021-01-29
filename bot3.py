@@ -107,7 +107,7 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text=reply_text))
 #Goodnight
-        if event.message.text == Good_Night[0]:
+        if event.message.text in Good_Night:
             value = randrange(0, len(Good_Night))
             reply_text = Good_Night[value]
             line_bot_api.reply_message(
