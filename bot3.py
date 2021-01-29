@@ -28,7 +28,7 @@ address = ["Nanotec thai",
             "74/74 Chuchat Anuson 7,Liang mueang pak kret 46,Bang Talat, Pak Kret District, Nonthaburi, 11120"]
 Miss_Lee = ["Miss Lee", "Shoot me in the heart", "Miss u", "https://www.youtube.com/watch?v=yJCzZqrWIzY"]
 
-Good_Night = ["Good night", "Gnight", "Bye Bye", "Good night"]
+Good_Night = ["Good night", "Gnight", "Bye Bye", "Night night....good dream", "Good night ...sleep tight"]
 
 @app.route("/")
 def hello():
