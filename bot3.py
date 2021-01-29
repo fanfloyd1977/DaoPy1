@@ -23,7 +23,7 @@ address = ["Nanotec thai",
             "Nanotec eng",
             "Dr. Lapporn Vayachuta National Science and Technology Development Agency 111 Thailand Science Park (TSP) Phahonyothin Road, Khlong Nueng, Khlong Luang, Pathum Thani 12120, Thailand",
             "Home non thai",
-            "74/74 ชูชาติอนุสรณ์ 7 เลี่ยงเมืองปากเกร็ด 46 ตำบลบางตลาด อำเภอ ปากเกร็ด นนทบุรี 11120"
+            "74/74 ชูชาติอนุสรณ์ 7 เลี่ยงเมืองปากเกร็ด 46 ตำบลบางตลาด อำเภอ ปากเกร็ด นนทบุรี 11120",
             "Home non eng",
             "74/74 Chuchat Anuson 7,Liang mueang pak kret 46,Bang Talat, Pak Kret District, Nonthaburi, 11120"]
 Miss_Lee = ["Miss Lee", "Shoot me in the heart", "Miss u", "https://www.youtube.com/watch?v=yJCzZqrWIzY"]
@@ -109,7 +109,7 @@ def handle_message(event):
 #Goodnight
         if event.message.text == Good_Night[0]:
             value = randrange(0, len(Good_Night))
-            reply_text = Miss_Lee[value]
+            reply_text = Good_Night[value]
             line_bot_api.reply_message(
             event.reply_token,
              TextSendMessage(text=reply_text))
