@@ -9,4 +9,4 @@ line-bot-sdk~=1.18.0
 chatbot
 jsonschema
 requests
-pandas~=1.2.1
+pandas
