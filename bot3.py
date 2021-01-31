@@ -1,6 +1,6 @@
 import os
 
-import pandas as pd
+from pandas import pandas as pd
 
 
 from random import randrange
@@ -15,9 +15,6 @@ app = Flask(__name__)
 line_bot_api = LineBotApi("ziev+1/ECWJDjw1CkOPjOMofjQ5mft0H0XtZknC/Vu+KnGZzi+2vFVF34UiX+QOdh4JADi+j/xeyPeSiGjyhnvTvKjNijstiixgQeY77aBxJ7R0B8TS/BMCG/y8KheHMwAZ7TJFKN6i5UPBoRzm2BQdB04t89/1O/w1cDnyilFU=")
 handler = WebhookHandler("4088552f2e9ee28de065d9bddce75ab2")
 
-
-data = pd.read_excel(r"C:\Users\Kirara\PycharmProjects\DaoPy1\Book.xls")
-row = data.shape[0]
 
 greeting = ["Hello","Hi", "Hi, Dao :)", "Hi, There!", "Howdy", "สวัสดีครับ"]
 
@@ -53,6 +50,10 @@ def callback():
     except InvalidSignatureError:
         abort(400)
     return "OK"
+
+
+
+
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -122,6 +123,8 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text=reply_text))
         else:
+            data = pd.read_excel(r"C:\Users\Kirara\PycharmProjects\DaoPy1\Book.xls")
+            row = data.shape[0]
             for i in range(row):
                 if event.message.text == data["Question"].values[i]:
                     reply_text = data["Answer"].values[i]
