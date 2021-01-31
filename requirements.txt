@@ -10,4 +10,4 @@ chatbot
 jsonschema
 requests
 pandas
-xlrd
+xlrd~=2.0.1
