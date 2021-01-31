@@ -1,4 +1,8 @@
 import os
+
+import pandas as pd
+
+
 from random import randrange
 from flask import Flask, request, abort
 
@@ -10,6 +14,10 @@ app = Flask(__name__)
 
 line_bot_api = LineBotApi("ziev+1/ECWJDjw1CkOPjOMofjQ5mft0H0XtZknC/Vu+KnGZzi+2vFVF34UiX+QOdh4JADi+j/xeyPeSiGjyhnvTvKjNijstiixgQeY77aBxJ7R0B8TS/BMCG/y8KheHMwAZ7TJFKN6i5UPBoRzm2BQdB04t89/1O/w1cDnyilFU=")
 handler = WebhookHandler("4088552f2e9ee28de065d9bddce75ab2")
+
+
+data = pd.read_excel(r"C:\Users\Kirara\PycharmProjects\DaoPy1\Book.xls")
+row = data.shape[0]
 
 greeting = ["Hello","Hi", "Hi, Dao :)", "Hi, There!", "Howdy", "สวัสดีครับ"]
 
@@ -27,7 +35,7 @@ address = ["Nanotec thai",
             "74/74 Chuchat Anuson 7,Liang mueang pak kret 46,Bang Talat, Pak Kret District, Nonthaburi, 11120"]
 Miss_Lee = ["Miss Lee", "Shoot me in the heart", "Miss u", "https://www.youtube.com/watch?v=yJCzZqrWIzY"]
 
-Good_Night = ["Good night", "Gnight", "Bye Bye", "Night night....good dream", "Good night ...sleep tight"]
+Good_Night = ["Good night", "Gnight", "Bye Bye", "Night night....good dream", "Good night ...sleep tight", "Miss you", "Miss u"]
 
 @app.route("/")
 def hello():
@@ -114,10 +122,12 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text=reply_text))
         else:
-            reply_text = "Good day"
-            line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=reply_text))
+            for i in range(row):
+                if event.message.text == data["Question"].values[i]:
+                    reply_text = data["Answer"].values[i]
+                    line_bot_api.reply_message(
+                    event.reply_token,
+                    TextSendMessage(text=reply_text))
 
 
 if __name__ == "__main__":
