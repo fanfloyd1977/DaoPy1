@@ -123,7 +123,7 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text=reply_text))
         else:
-            data = pd.read_excel(r"C:\Users\Kirara\PycharmProjects\DaoPy1\Book.xls")
+            data = pd.read_excel(r"Book.xls")
             row = data.shape[0]
             for i in range(row):
                 if event.message.text == data["Question"].values[i]:
