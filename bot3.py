@@ -32,7 +32,7 @@ address = ["Nanotec thai",
             "74/74 Chuchat Anuson 7,Liang mueang pak kret 46,Bang Talat, Pak Kret District, Nonthaburi, 11120"]
 Miss_Lee = ["Miss Lee", "Shoot me in the heart", "Miss u", "https://www.youtube.com/watch?v=yJCzZqrWIzY"]
 
-Good_Night = ["Good night", "Gnight", "Bye Bye", "Night night....good dream", "Good night ...sleep tight", "Miss you", "Miss u"]
+Good_Night = ["Good night", "Gnight", "Bye Bye", "Night night....good dream", "Good night ...sleep tight", "Miss you", "Miss u", "Bye"]
 
 @app.route("/")
 def hello():
@@ -128,11 +128,17 @@ def handle_message(event):
             data = pd.read_excel(r"Book.xls")
             row = data.shape[0]
             for i in range(row):
-                if event.message.text.lower() == data["Question"].values[i]:
+                 if event.message.text.lower() == data["Question"].values[i]:
                     reply_text = data["Answer"].values[i]
                     line_bot_api.reply_message(
                     event.reply_token,
                     TextSendMessage(text=reply_text))
+                 elif event.message.text.lower() != data["Question"].values[i]:
+                        reply_text = "ok"
+                        line_bot_api.reply_message(
+                        event.reply_token,
+                        TextSendMessage(text=reply_text))
+
 
 
 if __name__ == "__main__":
