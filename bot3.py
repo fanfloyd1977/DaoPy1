@@ -19,7 +19,7 @@ handler = WebhookHandler("4088552f2e9ee28de065d9bddce75ab2")
 greeting = ["Hello","Hi", "Hi, Dao :)", "Hi, There!", "Howdy", "สวัสดีครับ"]
 
 
-emo = ["How are you?", "how r u?",
+emo = ["How are you?", "How r u?",
        "Im fine, Thanks you and you", "I want to fly away", "Someday, I will fly", "I'm doing well", "I miss you"]
 
 address = ["Nanotec thai",
@@ -126,7 +126,7 @@ def handle_message(event):
             data = pd.read_excel(r"Book.xls")
             row = data.shape[0]
             for i in range(row):
-                if event.message.text == data["Question"].values[i]:
+                if event.message.text.lower() == data["Question"].values[i]:
                     reply_text = data["Answer"].values[i]
                     line_bot_api.reply_message(
                     event.reply_token,
