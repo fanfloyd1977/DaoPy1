@@ -117,12 +117,12 @@ def handle_message(event):
             TextSendMessage(text=reply_text))
 #Goodnight
 
-        if  event.message.text in Good_Night:
-                    value = randrange(0, len(Good_Night))
-                    reply_text = Good_Night[value]
-                    line_bot_api.reply_message(
-                    event.reply_token,
-                    TextSendMessage(text=reply_text))
+        if  event.message.text.lower() in [low.lower() for low in Good_Night]:
+            value = randrange(0, len(Good_Night))
+            reply_text = Good_Night[value]
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=reply_text))
 
         else:
             data = pd.read_excel(r"Book.xls")
