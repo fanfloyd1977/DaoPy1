@@ -133,7 +133,7 @@ def handle_message(event):
                     line_bot_api.reply_message(
                     event.reply_token,
                     TextSendMessage(text=reply_text))
-                 elif event.message.text.lower() != data["Question"].values[i]:
+                 else:
                         reply_text = "ok"
                         line_bot_api.reply_message(
                         event.reply_token,
