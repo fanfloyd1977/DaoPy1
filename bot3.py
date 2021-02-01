@@ -58,58 +58,58 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 #Greetings_1
-        if event.message.text in greeting:
+        if event.message.text.lower() in [low.lower() for low in greeting]:
             value = randrange(0, len(greeting))
             reply_text = greeting[value]
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
 #Greetings_2
-        if event.message.text == "Name?":
+        if event.message.text.lower() == "Name?".lower():
             reply_text = "Hi, I'm Miss Lee. Nice to meet u"
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
 #Greetings_3
-        if event.message.text == greeting[0]:
+        if event.message.text.lower() == greeting[0].lower():
             value = randrange(1, len(greeting))
             reply_text = greeting[value]
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
 #Emo_1
-        if event.message.text == emo[0] or event.message.text == emo[1]:
+        if event.message.text.lower() == emo[0].lower() or event.message.text.lower() == emo[1].lower():
             value = randrange(2, len(emo))
             reply_text = emo[value]
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
 #Address_1
-        if event.message.text == address[0]:
+        if event.message.text.lower() == address[0].lower():
             reply_text = address[1]
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
 #Address_2
-        if event.message.text == address[2]:
+        if event.message.text.lower() == address[2].lower():
             reply_text = address[3]
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
 #Address_3
-        if event.message.text == address[4]:
+        if event.message.text.lower() == address[4].lower():
             reply_text = address[5]
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
 #Address_4
-        if event.message.text == address[6]:
+        if event.message.text.lower == address[6].lower():
             reply_text = address[7]
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
 #Miss Lee
-        if event.message.text == Miss_Lee[0] or event.message.text == Miss_Lee[1]:
+        if event.message.text.lower() == Miss_Lee[0].lower() or event.message.text.lower() == Miss_Lee[1].lower():
             value = randrange(2, len(Miss_Lee))
             reply_text = Miss_Lee[value]
             line_bot_api.reply_message(
