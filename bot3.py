@@ -133,12 +133,11 @@ def handle_message(event):
                     line_bot_api.reply_message(
                     event.reply_token,
                     TextSendMessage(text=reply_text))
-                 else:
-                        reply_text = "ok"
-                        line_bot_api.reply_message(
-                        event.reply_token,
-                        TextSendMessage(text=reply_text))
-
+            else:
+                reply_text = "ok"
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    TextSendMessage(text=reply_text))
 
 
 if __name__ == "__main__":
