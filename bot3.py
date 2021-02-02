@@ -3,6 +3,8 @@ import os
 from pandas import pandas as pd
 
 
+
+
 from random import randrange
 from flask import Flask, request, abort
 
@@ -149,10 +151,17 @@ def handle_message(event):
                     event.reply_token,
                     TextSendMessage(text=reply_text))
             else:
-                reply_text = "ok"
-                line_bot_api.reply_message(
-                    event.reply_token,
-                    TextSendMessage(text=reply_text))
+                data2 = pd.read_excel(r"Book2.xls")
+                row = data.shape[0]
+                for i in range(row):
+                    res = [j for j in data["Question"].values[i] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
+                    if res:
+                        reply_text = data["Answer"].values[i]
+                        line_bot_api.reply_message(
+                        event.reply_token,
+                        TextSendMessage(text=reply_text))
+
+
 
 
 if __name__ == "__main__":
