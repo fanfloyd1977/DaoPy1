@@ -136,7 +136,7 @@ def handle_message(event):
             ImageSendMessage(original_content_url= reply_text, preview_image_url= reply_text))
 #Sticker
         if event.message.text.lower() == "send me sticker":
-            value = randrange(180, 259 )
+            value = randrange(180, 259)
             line_bot_api.reply_message(
             event.reply_token,
             StickerSendMessage(package_id=3, sticker_id=value))
@@ -156,7 +156,8 @@ def handle_message(event):
                 for i in range(row):
                     res = [j for j in data["Question"].values[i] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
                     if res:
-                        reply_text = data["Answer"].values[i]
+                        value = randrange(1, row)
+                        reply_text = data["Answer"].values[value]
                         line_bot_api.reply_message(
                         event.reply_token,
                         TextSendMessage(text=reply_text))
