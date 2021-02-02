@@ -135,7 +135,7 @@ def handle_message(event):
             event.reply_token,
             ImageSendMessage(original_content_url= reply_text, preview_image_url= reply_text))
 #Sticker
-        if event.message.text.lower() == "send me sticker":
+        if event.message.text.lower() in "send me sticker":
             value = randrange(180, 259)
             line_bot_api.reply_message(
             event.reply_token,
