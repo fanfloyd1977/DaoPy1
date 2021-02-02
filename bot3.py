@@ -123,6 +123,14 @@ def handle_message(event):
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
+#Image
+        if event.message.text.lower() == "send image":
+            reply_text = "https://www.pinterest.com/pin/88875792631945830/"
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=reply_text))
+
+
 
         else:
             data = pd.read_excel(r"Book.xls")
