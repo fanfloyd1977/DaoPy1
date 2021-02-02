@@ -127,7 +127,7 @@ def handle_message(event):
         if event.message.text.lower() == "send image":
             line_bot_api.reply_message(
             event.reply_token,
-            ImageSendMessage(original_content_url="IU.jpg", preview_image_url="IU.jpg"))
+            ImageSendMessage(original_content_url="https://i.ytimg.com/vi/gk7LGFRIr0w/maxresdefault.jpg", preview_image_url="https://i.ytimg.com/vi/gk7LGFRIr0w/maxresdefault.jpg"))
 #Sticker
         if event.message.text.lower() == "send me sticker":
             line_bot_api.reply_message(
