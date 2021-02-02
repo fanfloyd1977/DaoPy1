@@ -128,17 +128,20 @@ def handle_message(event):
             image = pd.read_excel(r"Image.xls")
             row = image.shape[0]
             value = randrange(1, row)
+            reply_text = image["Url"].values[value]
             line_bot_api.reply_message(
             event.reply_token,
-            ImageSendMessage(original_content_url= value, preview_image_url= value))
+            ImageSendMessage(original_content_url= reply_text, preview_image_url= reply_text))
 #Sticker
         if event.message.text.lower() == "send me sticker":
             sticker = pd.read_excel(r"Sticker.xls")
-            row = image.shape[0]
+            row = sticker.shape[0]
             value = randrange(1, row)
+            reply_text1 = sticker["package_id"].values[value]
+            reply_text2 = sticker["sticker_id"].values[value]
             line_bot_api.reply_message(
             event.reply_token,
-            StickerSendMessage(package_id=row, sticker_id=row))
+            StickerSendMessage(package_id=reply_text1, sticker_id=reply_text2))
 
         else:
             data = pd.read_excel(r"Book.xls")
