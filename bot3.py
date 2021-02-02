@@ -134,14 +134,10 @@ def handle_message(event):
             ImageSendMessage(original_content_url= reply_text, preview_image_url= reply_text))
 #Sticker
         if event.message.text.lower() == "send me sticker":
-            sticker = pd.read_excel(r"Sticker.xls")
-            row = sticker.shape[0]
-            value = randrange(1, row)
-            reply_text1 = sticker["package_id"].values[value]
-            reply_text2 = sticker["sticker_id"].values[value]
+            value = randrange(180, 259 )
             line_bot_api.reply_message(
             event.reply_token,
-            StickerSendMessage(package_id=reply_text1, sticker_id=reply_text2))
+            StickerSendMessage(package_id=3, sticker_id=value))
 
         else:
             data = pd.read_excel(r"Book.xls")
