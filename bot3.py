@@ -152,12 +152,12 @@ def handle_message(event):
                     TextSendMessage(text=reply_text))
             else:
                 data2 = pd.read_excel(r"Book2.xls")
-                row = data.shape[0]
+                row = data2.shape[0]
                 for i in range(row):
-                    res = [j for j in data["Question"].values[i] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
+                    res = [j for j in data2["Question"].values[i] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
                     if res:
                         value = randrange(1, row)
-                        reply_text = data["Answer"].values[value]
+                        reply_text = data2["Answer"].values[value]
                         line_bot_api.reply_message(
                         event.reply_token,
                         TextSendMessage(text=reply_text))
