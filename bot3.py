@@ -8,7 +8,7 @@ from flask import Flask, request, abort
 
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
+from linebot.models import *
 
 app = Flask(__name__)
 
@@ -125,12 +125,14 @@ def handle_message(event):
             TextSendMessage(text=reply_text))
 #Image
         if event.message.text.lower() == "send image":
-            reply_text = "https://www.pinterest.com/pin/88875792631945830/"
             line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=reply_text))
-
-
+            ImageSendMessage(original_content_url="https://www.pinterest.com/pin/88875792631945830/", preview_image_url="https://www.pinterest.com/pin/88875792631945830/"))
+#Sticker
+        if event.message.text.lower() == "send me sticker":
+            line_bot_api.reply_message(
+            event.reply_token,
+            StickerSendMessage(package_id=3, sticker_id=213))
 
         else:
             data = pd.read_excel(r"Book.xls")
