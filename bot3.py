@@ -158,10 +158,9 @@ def handle_message(event):
                     if res:
                         value = randrange(1, row)
                         reply_text = data2["Answer"].values[value]
-                        reply_text2 = data2["Answer2"].values[value]
                         line_bot_api.reply_message(
                         event.reply_token,
-                        [TextSendMessage(text=reply_text),TextSendMessage(text=reply_text2)])
+                        TextSendMessage(text=reply_text))
 
 
 
