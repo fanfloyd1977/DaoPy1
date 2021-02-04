@@ -150,6 +150,13 @@ def handle_message(event):
                     line_bot_api.reply_message(
                     event.reply_token,
                     TextSendMessage(text=reply_text))
+                 else:
+                     res = [j for j in data["Question"].values[i] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
+                     if res:
+                        reply_text = data["Answer"].values[i]
+                        line_bot_api.reply_message(
+                        event.reply_token,
+                        TextSendMessage(text=reply_text))
             else:
                 data2 = pd.read_excel(r"Book2.xls")
                 row = data2.shape[0]
