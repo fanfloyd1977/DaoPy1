@@ -18,7 +18,7 @@ line_bot_api = LineBotApi("ziev+1/ECWJDjw1CkOPjOMofjQ5mft0H0XtZknC/Vu+KnGZzi+2vF
 handler = WebhookHandler("4088552f2e9ee28de065d9bddce75ab2")
 
 
-greeting = ["Hello","Hi", "Hi, Dao :)", "Hi, There!", "Howdy", "สวัสดีครับ"]
+greeting = ["Hello Hello","Hi Hi", "Hi, Dao :)", "Hi, There!", "Good day", "สวัสดีครับ"]
 
 
 emo = ["How are you?", "How r u?",
@@ -150,13 +150,7 @@ def handle_message(event):
                     line_bot_api.reply_message(
                     event.reply_token,
                     TextSendMessage(text=reply_text))
-                 else:
-                     res = [j for j in data["Question"].values[i] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
-                     if res:
-                        reply_text = data["Answer"].values[k]
-                        line_bot_api.reply_message(
-                        event.reply_token,
-                        TextSendMessage(text=reply_text))
+
             else:
                 data2 = pd.read_excel(r"Book2.xls")
                 row = data2.shape[0]
