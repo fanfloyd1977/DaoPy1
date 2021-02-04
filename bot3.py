@@ -135,12 +135,12 @@ def handle_message(event):
             event.reply_token,
             ImageSendMessage(original_content_url= reply_text, preview_image_url= reply_text))
 #Sticker
-        if event.message.text.lower() in "send me sticker":
+        if event.message.text.lower() in "send me sticker" or event.message.text.lower() in ["^^", ":)", ";)", "\^o^/"]:
             value = randrange(180, 259)
             line_bot_api.reply_message(
             event.reply_token,
             StickerSendMessage(package_id=3, sticker_id=value))
-
+#Book
         else:
             data = pd.read_excel(r"Book.xls")
             row = data.shape[0]
@@ -153,7 +153,7 @@ def handle_message(event):
                  else:
                      res = [j for j in data["Question"].values[i] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
                      if res:
-                        reply_text = data["Answer"].values[i]
+                        reply_text = data["Answer"].values[j]
                         line_bot_api.reply_message(
                         event.reply_token,
                         TextSendMessage(text=reply_text))
