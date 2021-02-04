@@ -151,16 +151,16 @@ def handle_message(event):
                     event.reply_token,
                     TextSendMessage(text=reply_text))
             else:
-                    data2 = pd.read_excel(r"Book2.xls")
-                    row = data2.shape[0]
-                    for i in range(row):
-                        res = [j for j in data2["Question"].values[i] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
-                        if res:
-                            value = randrange(1, row)
-                            reply_text = data2["Answer"].values[value]
-                            line_bot_api.reply_message(
-                            event.reply_token,
-                            TextSendMessage(text=reply_text))
+                data2 = pd.read_excel(r"Book2.xls")
+                row = data2.shape[0]
+                for i in range(row):
+                    res = [j for j in data2["Question"].values[i] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
+                    if res:
+                        value = randrange(1, row)
+                        reply_text = data2["Answer"].values[value]
+                        line_bot_api.reply_message(
+                        event.reply_token,
+                        TextSendMessage(text=reply_text))
 
 if __name__ == "__main__":
     app.run()
