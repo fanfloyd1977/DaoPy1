@@ -153,8 +153,8 @@ def handle_message(event):
             else:
                 data2 = pd.read_excel(r"Book2.xls")
                 row = data2.shape[0]
-                for i in range(row):
-                    res = [j for j in data2["Question"].values[i] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
+                for r in range(row):
+                    res = [j for j in data2["Question"].values[r] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
                     if res:
                         value = randrange(1, row)
                         reply_text = data2["Answer"].values[value]
