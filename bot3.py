@@ -145,7 +145,7 @@ def handle_message(event):
             data = pd.read_excel(r"Book.xls")
             row1 = data.shape[0]
             for i in range(row1):
-                 if event.message.text.lower() == data["Question"].values[i]:
+                 if event.message.text.lower() == data["Question"].values[i].lower():
                     reply_text = data["Answer"].values[i]
                     line_bot_api.reply_message(
                     event.reply_token,
