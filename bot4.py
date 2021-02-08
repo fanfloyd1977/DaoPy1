@@ -53,9 +53,12 @@ def handle_message(event):
         data = pd.read_excel(r"Book3.xls")
         row = data.shape[0]
         for i in range(row):
-            res = i in data["Question"].values[i].lower()
+            res = [j for j in data["Question"].values[i] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
             if res:
                 reply_text = data["Answer"].values[i]
                 line_bot_api.reply_message(
                     event.reply_token,
                     TextSendMessage(text=reply_text))
+
+if __name__ == "__main__":
+    app.run()
