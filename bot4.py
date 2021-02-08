@@ -55,7 +55,7 @@ def handle_message(event):
         for i in range(row):
             res = [j for j in data["Question"].values[i] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
             if res:
-                reply_text = data["Answer"].values[i]
+                reply_text = data["Answer"].values[j]
                 line_bot_api.reply_message(
                     event.reply_token,
                     TextSendMessage(text=reply_text))
