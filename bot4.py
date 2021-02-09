@@ -59,6 +59,9 @@ def handle_message(event):
     if event.message.text.lower() == "book":
         sheet = client.open("Bookone").sheet1
         sheet.update_cell(15,1,"Match")
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage("Writing to Book"))
 
 
 if __name__ == "__main__":
