@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "fanfloyd1977",
+  "private_key_id": "2bf294ca8a0e62d7d8412e3bfa58b6f098bc2b24",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDhnrqJgtOMtVgn\n/eTx/PM1Qh0y0/KMOW7ITI0QTggo+kBkKwX9tM/aLmyFGciO74ffrmZsB2qSD+KT\nqDb5BUCyRzQlGaW3xykoLFkD835iCOnedfB6DuetuxKudP7GXvCO6M9xfohsfw08\nnCqRjAGz0shHtmWLbVxRsl0xAOkDWJvFDq76QU7LHJFCQYdPZDkhMgzKo94UMjur\n7sPgHiL0XePGMhdDRtp4suH5zv8qKBbVmYKjTPVjMdoWLH0HYTZWmNAe06hDl3Rc\n4YYXRhHi1hm6xVf8/GQBb6VN6Gs3NHpSpXe1G+75PCAKpEVgDkYFW7JzF6W4WDDJ\n0WdcBe51AgMBAAECggEANfBwwDdaxCUGsmjstz22F2F7AY/SSNviNFi40NEW+lT5\n1/jBMepsVskKgLetTx7M6RkUu3b6b3kEvjBVFCvBT93eBZCgIdOnb0dK8Lrh2CYx\nY1Hm8AdoNAypZrPpxRslf8UA8y1BCE9HptnfA3TpY0hdQWfF1xOKIq31waVqD7ZI\nbp8v3LULkp8EAerL2od315jDOqpbTecfirHGkVz67khR8FoeyWwF6CZkCvdmZdk+\nXpvur5lg0GA4H9mS+MxjOginAhblegpLNfGr0zTD/mO4q+yH8xB7D13DmyG4MzHZ\nCUcmOB75a4MaAonGHx3HwhTIbOgkdJnwVsOjjKc2AQKBgQD4D13mULpiwFO71XmQ\nDlWMAgtt/x87j3pe3POVJ7Hn8Afec+AGPQ/Ocjfpc288GLQ1dlxJDz7nfX7af1FC\nuZWC2gpD9LyvEFw0sxTyUsyMflFbB2bEL0lX3KMnNTqC6kRo/anMewypgeOxCUs0\nVLUgAhbtp2cjr768opNdELgvYQKBgQDo13xkmouwPyhoIlwqJRiSV0gqzBSVDQLu\n4em2N75xmfLOeg5fIeFPiQ6bb4IusHhSLduPym4e/e3xA4QP2VduoIEypaWnKbF1\nHucl9G+7EFgv9/lHBEPGzapkuTzaKy43tdZ9SxkdbXfYVSNVQvfJRlCwHZJKiLlE\nTRV7Skc7lQKBgQDdJ+4ikaSquCevFjMMEQuKCKSiC8uPsWp7Ouhb+YjubRzG4m4/\ngZ8fAswAcW8hmDDKXV0HsfT2M/et28baA1Vd1QFD9uVl+uMKBQNOzC0bsN7dlmqz\nzCjKkaZQJW+mGjClnkoNSUNPuMMEKnIHFOJqyBIjDZWxxlT6HsPdPDPJ4QKBgQCN\n6gifKLLLETOHhKm35jQ7vYb2zrwcvHl1L6xKq18fzjz3K91mjjfNSjPk+OnXmyc6\nr0iLM047BXno08PCBS4M9zbHr75vTDIkuFkaAQm4chXN5s3AQxEsMl4QVfaI4pig\ny+uXIhaEoRvSdtG6Pb7Ypkq3jM6FLx/8SR82recMoQKBgAdGGjYzDpUBkjxuN4eZ\n/+yQEef4hMVj82z87vowvdfGgDwhwvmLcEQdyu4vRjUz05ppvXkMueVPMohNlQ7K\n7qTMSM92TAKsqjMKN5gyCQMIZ5jfLOKyvxZ8Sdu72lBCWjOlROJIwq3v+bR4iBGx\nmKkZ+4yGW1oyrbbcPaQWt1gU\n-----END PRIVATE KEY-----\n",
+  "client_email": "fanfloyd1977@fanfloyd1977.iam.gserviceaccount.com",
+  "client_id": "111944460880476828460",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/fanfloyd1977%40fanfloyd1977.iam.gserviceaccount.com"
+}

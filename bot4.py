@@ -7,10 +7,17 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import *
 
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
 app = Flask(__name__)
 
 line_bot_api = LineBotApi("ziev+1/ECWJDjw1CkOPjOMofjQ5mft0H0XtZknC/Vu+KnGZzi+2vFVF34UiX+QOdh4JADi+j/xeyPeSiGjyhnvTvKjNijstiixgQeY77aBxJ7R0B8TS/BMCG/y8KheHMwAZ7TJFKN6i5UPBoRzm2BQdB04t89/1O/w1cDnyilFU=")
 handler = WebhookHandler("4088552f2e9ee28de065d9bddce75ab2")
+
+scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+creds = ServiceAccountCredentials.from_json_keyfile_name('fanfloyd1977-2bf294ca8a0e.json', scope)
+client = gspread.authorize(creds)
 
 @app.route("/")
 def hello():
@@ -49,16 +56,7 @@ def handle_message(event):
             StickerSendMessage(package_id=3, sticker_id=value))
 
 #Book
-    if True:
-        data = pd.read_excel(r"Book3.xls")
-        row = data.shape[0]
-        for i in range(row):
-            res = [j for j in data["Question"].values[i] if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
-            if res:
-                reply_text = data["Answer"].values[j]
-                line_bot_api.reply_message(
-                    event.reply_token,
-                    TextSendMessage(text=reply_text))
+
 
 if __name__ == "__main__":
     app.run()
