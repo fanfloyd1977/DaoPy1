@@ -56,6 +56,9 @@ def handle_message(event):
             StickerSendMessage(package_id=3, sticker_id=value))
 
 #Book
+    if event.message.text.lower() == "book":
+        sheet = client.open("Bookone").sheet1
+        sheet.update_cell(15,1,"Match")
 
 
 if __name__ == "__main__":
