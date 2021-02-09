@@ -9,5 +9,7 @@ line-bot-sdk~=1.18.0
 chatbot
 jsonschema
 requests
-pandas
 xlrd~=2.0.1
+pandas~=1.2.1
+gspread~=3.6.0
+oauth2client~=4.1.3
