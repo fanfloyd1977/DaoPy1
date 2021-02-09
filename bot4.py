@@ -56,21 +56,23 @@ def handle_message(event):
             StickerSendMessage(package_id=3, sticker_id=value))
 
 #Book
-    if event.message.text == "Repeat":
-
-        for i in range(10,14):
-            sheet = client.open("Bookone").sheet1
-            sheet.update_cell(i,3,"Match")
+    else:
+        sheet = client.open("Bookone").sheet1
+        if event.message.text == sheet.cell(2,1).value:
+            sheet.update_cell(2,3,"Match")
             line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage("Repeat success"))
-
-                #event.message.text == sheet.cell(i,1).value:
-                #sheet.update_cell(i,3,"Match")
-                #line_bot_api.reply_message(
-                #event.reply_token,
-                #TextSendMessage(sheet.cell(i,2).value))
-
+            TextSendMessage(sheet.cell(2,2).value))
+        if event.message.text == sheet.cell(3,1).value:
+            sheet.update_cell(3,3,"Match")
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(sheet.cell(3,2).value))
+        if event.message.text == sheet.cell(4,1).value:
+            sheet.update_cell(4,3,"Match")
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(sheet.cell(4,2).value))
 
 
 if __name__ == "__main__":
