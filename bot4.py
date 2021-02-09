@@ -58,7 +58,7 @@ def handle_message(event):
 #Book
     if event.message.text == "Repeat":
         sheet = client.open("Bookone").sheet1
-        for i in range(14):
+        for i in range(5,14):
             sheet.update_cell(i,3,"Match")
             line_bot_api.reply_message(
             event.reply_token,
