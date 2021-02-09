@@ -56,12 +56,15 @@ def handle_message(event):
             StickerSendMessage(package_id=3, sticker_id=value))
 
 #Book
-    if event.message.text.lower() == "book":
+    else:
         sheet = client.open("Bookone").sheet1
-        sheet.update_cell(15,1,"Match")
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage("Writing to Book"))
+        i=2
+        for i in range(14):
+            if event.message.text.lower() == sheet.cell(i,1).value.lower():
+                sheet.update_cell(i,3,"Match")
+                line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(sheet.cell(i,2).value))
 
 
 if __name__ == "__main__":
