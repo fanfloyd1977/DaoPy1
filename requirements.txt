@@ -10,6 +10,6 @@ chatbot
 jsonschema
 requests
 xlrd~=2.0.1
-pandas~=1.2.1
+pandas
 gspread~=3.6.0
 oauth2client~=4.1.3
