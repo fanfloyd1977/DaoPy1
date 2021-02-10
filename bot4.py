@@ -59,7 +59,7 @@ def handle_message(event):
 #Book
     else:
         sheet = client.open("Bookone").sheet1
-        for k in range(2,13):
+        for k in range(2,14):
             sheet.update_cell(k,3,0)
         for j in range(1,14):
             match = 0
