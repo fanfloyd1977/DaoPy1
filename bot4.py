@@ -73,6 +73,11 @@ def handle_message(event):
             line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(sheet.cell(4,2).value))
+        if event.message.text.split() in sheet.cell(5,1).value.split():
+            sheet.update_cell(5,3,"Split Match")
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(sheet.cell(5,2).value))
 
 
 if __name__ == "__main__":
