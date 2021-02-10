@@ -58,15 +58,17 @@ def handle_message(event):
 #Book
     else:
         sheet = client.open("Bookone").sheet1
+
         for k in range(2,15):
             sheet.update_cell(k,3,0)
+            
         for j in range (1,15):
-            count = 0
+            match = 0
             for i in event.message.text.split():
                 if i in sheet.cell(j,1).value.split():
-                    count = count+1
-                    sheet.update_cell(j,3,count)
-                    A = event.message.text.split()
+                    match = match+1
+                    sheet.update_cell(j,3,match)
+                    A = sheet.cell(j,1).value
                     line_bot_api.reply_message(event.reply_token, TextSendMessage(A))
 
 
