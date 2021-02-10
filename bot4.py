@@ -58,26 +58,15 @@ def handle_message(event):
 #Book
     else:
         sheet = client.open("Bookone").sheet1
-        if event.message.text == sheet.cell(2,1).value:
-            sheet.update_cell(2,3,"Match")
-            line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(sheet.cell(2,2).value))
-        if event.message.text == sheet.cell(3,1).value:
-            sheet.update_cell(3,3,"Match")
-            line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(sheet.cell(3,2).value))
-        if event.message.text == sheet.cell(4,1).value:
-            sheet.update_cell(4,3,"Match")
-            line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(sheet.cell(4,2).value))
-        if event.message.text.split() in sheet.cell(5,1).split().value:
-            sheet.update_cell(5,3,event.message.text.split())
-            line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(sheet.cell(5,2).value))
+        for k in range(2,15):
+            sheet.update_cell(k,3,0)
+        for j in range (1,15):
+            count = 0
+            for i in event.message.text.split():
+                if i in sheet.cell(j,1).value.split():
+                    count = count+1
+                    sheet.update_cell(j,3,count)
+                    line_bot_api.reply_message(event.reply_token, TextSendMessage("Worked"))
 
 
 if __name__ == "__main__":
