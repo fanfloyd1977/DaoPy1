@@ -58,7 +58,8 @@ def handle_message(event):
 #Book
     else:
         sheet = client.open("Bookone").sheet1
-
+        for k in range(2,15):
+            sheet.update_cell(k,3,0)
         for j in range(1,15):
             match = 0
             for i in event.message.text.split():
@@ -69,8 +70,6 @@ def handle_message(event):
         Col_data = sheet.col_values(3)
         M = max(Col_data)
         A = sheet.cell(Col_data.index(M)+1,2).value
-        for k in range(2,15):
-            sheet.update_cell(k,3,0)
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=A))
 
 
