@@ -66,7 +66,8 @@ def handle_message(event):
                 if i in sheet.cell(j,1).value.split():
                     count = count+1
                     sheet.update_cell(j,3,count)
-                    line_bot_api.reply_message(event.reply_token, TextSendMessage(event.message.text.split()))
+                    A = event.message.text.split()
+                    line_bot_api.reply_message(event.reply_token, TextSendMessage(A))
 
 
 if __name__ == "__main__":
