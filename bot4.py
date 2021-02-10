@@ -66,10 +66,10 @@ def handle_message(event):
             match = 0
             for i in event.message.text.split():
                 if i in sheet.cell(j,1).value.split():
-                    match = match+1
+                    match +=1
                     sheet.update_cell(j,3,match)
-                    A = sheet.cell(j,2).value
-                    line_bot_api.reply_message(event.reply_token, TextSendMessage(A))
+                    #A = sheet.cell(j,2).value
+                    #line_bot_api.reply_message(event.reply_token, TextSendMessage(A))
 
 
 if __name__ == "__main__":
