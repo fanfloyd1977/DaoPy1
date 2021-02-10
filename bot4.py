@@ -59,9 +59,9 @@ def handle_message(event):
 #Book
     else:
         sheet = client.open("Bookone").sheet1
-        for k in range(2,15):
+        for k in range(2,16):
             sheet.update_cell(k,3,0)
-        for j in range(1,15):
+        for j in range(1,16):
             match = 0
             for i in event.message.text.split():
                 if i in sheet.cell(j,1).value.split():
