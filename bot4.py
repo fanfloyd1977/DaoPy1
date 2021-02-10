@@ -68,8 +68,13 @@ def handle_message(event):
                 if i in sheet.cell(j,1).value.split():
                     match +=1
                     sheet.update_cell(j,3,match)
-                    #A = sheet.cell(j,2).value
-                    #line_bot_api.reply_message(event.reply_token, TextSendMessage(A))
+
+        Col_data = sheet.col_values(3)
+        M = max(Col_data)
+        A = sheet.cell(Col_data.index(M)+1,2).value
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=A))
+
+
 
 
 if __name__ == "__main__":
