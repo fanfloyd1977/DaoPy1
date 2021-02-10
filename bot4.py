@@ -67,7 +67,7 @@ def handle_message(event):
                 if i in sheet.cell(j,1).value.split():
                     match +=1
                     sheet.update_cell(j,3,match)
-                    time.sleep(2.4)
+                    time.sleep(1)
 
         Col_data = sheet.col_values(3)
         M = max(Col_data)
