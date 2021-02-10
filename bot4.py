@@ -61,14 +61,14 @@ def handle_message(event):
 
         for k in range(2,15):
             sheet.update_cell(k,3,0)
-            
-        for j in range (1,15):
+
+        for j in range(1,15):
             match = 0
             for i in event.message.text.split():
                 if i in sheet.cell(j,1).value.split():
                     match = match+1
                     sheet.update_cell(j,3,match)
-                    A = sheet.cell(j,1).value
+                    A = sheet.cell(j,2).value
                     line_bot_api.reply_message(event.reply_token, TextSendMessage(A))
 
 
