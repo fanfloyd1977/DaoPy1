@@ -64,7 +64,8 @@ def handle_message(event):
         for j in range(1,16):
             match = 0
             for i in event.message.text.split():
-                if i in sheet.cell(j,1).value.split():
+                cell_split = sheet.cell(j,1).value.split()
+                if i in cell_split:
                     match +=1
                     sheet.update_cell(j,3,match)
                     time.sleep(1)
@@ -73,11 +74,6 @@ def handle_message(event):
         M = max(Col_data)
         A = sheet.cell(Col_data.index(M)+1,2).value
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=A))
-
-
-
-
-
 
 if __name__ == "__main__":
     app.run()
