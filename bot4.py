@@ -1,5 +1,4 @@
 import time
-import schedule
 
 from pandas import pandas as pd
 
@@ -76,14 +75,10 @@ def handle_message(event):
         M = max(Col_data)
         A = sheet.cell(Col_data.index(M)+1,2).value
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=A))
+        time.sleep(10)
+        line_bot_api.push_message(event.reply_token,TextSendMessage(text="Hello again"))
 
-@handler.add(FollowEvent)
-def job(event):
-    line_bot_api.push_message((event.reply_token,TextSendMessage(text="Good Day Dao")))
-    schedule.every(10).seconds.do(job)
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
+
 
 
 if __name__ == "__main__":
