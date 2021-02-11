@@ -78,8 +78,8 @@ def handle_message(event):
             sheet.update_cell(k,3,0)
         for j in range(1,21):
             match = 0
-            for i in event.message.text.split():
-                cell_split = sheet.cell(j,1).value.split()
+            for i in event.message.text.split().lower():
+                cell_split = sheet.cell(j,1).value.split().lower()
                 if i in cell_split:
                     match +=1
                     sheet.update_cell(j,3,match)
