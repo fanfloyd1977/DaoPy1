@@ -57,6 +57,9 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             StickerSendMessage(package_id=3, sticker_id=value))
+        line_bot_api.reply_message(
+            event.reply_token,
+            StickerSendMessage(package_id=3, sticker_id=value))
 
 
 #Book
@@ -78,15 +81,6 @@ def handle_message(event):
         A = sheet.cell(Col_data.index(M)+1,2).value
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=A))
 
-@handler.add(MessageEvent, message=TextMessage)
-def job(event):
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text="Have a good Day"))
-
 
 if __name__ == "__main__":
     app.run()
-
-    schedule.every(10).seconds.do(job)
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
