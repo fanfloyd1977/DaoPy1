@@ -57,6 +57,7 @@ def handle_message(event):
             event.reply_token,
             StickerSendMessage(package_id=3, sticker_id=value))
 
+
 #Book
     else:
         sheet = client.open("Bookone").sheet1
@@ -74,9 +75,9 @@ def handle_message(event):
         Col_data = sheet.col_values(3)
         M = max(Col_data)
         A = sheet.cell(Col_data.index(M)+1,2).value
-        line_bot_api.reply_message(event.reply_token,
-        [TextSendMessage(text=A),time.sleep(10),
-         TextSendMessage(text="Hello again")])
+        line_bot_api.push_message(event.reply_token,TextSendMessage(text=A))
+        time.sleep(10)
+        line_bot_api.push_message(event.reply_token,TextSendMessage(text="Hello again!!"))
 
 
 
