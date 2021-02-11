@@ -81,10 +81,12 @@ def handle_message(event):
 @handler.add(MessageEvent, message=TextMessage)
 def job(event):
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text="Have a good Day"))
-    schedule.every(10).seconds.do(job)
+
 
 if __name__ == "__main__":
     app.run()
+
+    schedule.every(10).seconds.do(job)
     while True:
         schedule.run_pending()
         time.sleep(1)
