@@ -77,14 +77,16 @@ def handle_message(event):
         A = sheet.cell(Col_data.index(M)+1,2).value
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=A))
 
+@handler.add(PostbackEvent, message=TextMessage)
 def job(event):
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text="I miss u already"))
+    if event.postback.data == "":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="I miss u already"))
 
 
 if __name__ == "__main__":
-    
+
     app.run()
-    job.run()
+
 
 
 
