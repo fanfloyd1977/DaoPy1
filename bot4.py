@@ -58,6 +58,19 @@ def handle_message(event):
             event.reply_token,
             StickerSendMessage(package_id=3, sticker_id=value))
 
+    elif event.message.text.lower() == "box":
+
+        buttons_template = ButtonsTemplate(
+            title='My Box', text='Hello, my box',actions=[
+            PostbackAction(label='start', data='start'),
+            PostbackAction(label='end', data='end'),
+            DatetimePickerAction(label='show', data='show', mode='date'),
+            PostbackAction(label='del', data='del'),
+                ])
+        template_message = TemplateSendMessage(
+            alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
+
 #Book
     else:
         sheet = client.open("Bookone").sheet1
@@ -77,10 +90,12 @@ def handle_message(event):
         A = sheet.cell(Col_data.index(M)+1,2).value
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=A))
 
-@handler.add(PostbackEvent, message=TextMessage)
-def job(event):
-    if event.postback.data == "":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="I miss u already"))
+@handler.add(PostbackEvent)
+def handle_postback(event):
+    data = event.postback.data
+    if data == "start":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Test Box"))
+
 
 
 if __name__ == "__main__":
