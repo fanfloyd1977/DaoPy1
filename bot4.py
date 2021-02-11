@@ -75,7 +75,7 @@ def handle_message(event):
         Col_data = sheet.col_values(3)
         M = max(Col_data)
         A = sheet.cell(Col_data.index(M)+1,2).value
-        line_bot_api.reply_message(event.reply_token,[TextSendMessage(text=A),StickerSendMessage(package_id=3, sticker_id=180)])
+        line_bot_api.reply_message(event.reply_token,[TextSendMessage(text=A),TextSendMessage(text=event.reply_token)])
 
 
 
