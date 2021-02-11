@@ -95,6 +95,8 @@ def handle_postback(event):
     data = event.postback.data
     if data == "start":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Test Box"))
+        time.sleep(5)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Test Box2"))
 
 
 
