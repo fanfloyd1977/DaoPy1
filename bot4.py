@@ -57,11 +57,6 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             StickerSendMessage(package_id=3, sticker_id=value))
-        value = randrange(180, 259)
-        line_bot_api.reply_message(
-            event.reply_token,
-            StickerSendMessage(package_id=3, sticker_id=value))
-
 
 #Book
     else:
@@ -82,6 +77,17 @@ def handle_message(event):
         A = sheet.cell(Col_data.index(M)+1,2).value
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=A))
 
+def job(event):
+    line_bot_api.reply_message(event.reply_token,TextSendMessage(text="I miss u already"))
+
 
 if __name__ == "__main__":
+    schedule.every(3).seconds.do(job)
+    job()
     app.run()
+while True:
+    schedule.run_pending()
+    time.sleep(1)
+
+
+
