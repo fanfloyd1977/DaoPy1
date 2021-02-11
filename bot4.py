@@ -80,10 +80,9 @@ def handle_message(event):
 @handler.add(FollowEvent)
 def job(event):
     line_bot_api.push_message((event.reply_token,TextSendMessage(text="Good Day Dao")))
-    #schedule.every(10).seconds.do(job)
+    schedule.every(10).seconds.do(job)
     while True:
-        schedule.every(10).seconds.do(job)
-        #schedule.run_pending()
+        schedule.run_pending()
         time.sleep(1)
 
 
