@@ -82,9 +82,11 @@ def job(event):
 
 
 if __name__ == "__main__":
+    
+    app.run()
     schedule.every(3).seconds.do(job)
     job()
-    app.run()
+
 while True:
     schedule.run_pending()
     time.sleep(1)
