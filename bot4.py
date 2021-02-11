@@ -61,7 +61,7 @@ def handle_message(event):
     elif event.message.text.lower() == "box":
 
         buttons_template = ButtonsTemplate(
-            title='My Box', text='Hello, my box',actions=[
+            title="Miss Lee's box", text="Hello, Miss Dao",actions=[
             PostbackAction(label='start', data='start'),
             PostbackAction(label='end', data='end'),
             DatetimePickerAction(label='show', data='show', mode='date'),
@@ -74,9 +74,9 @@ def handle_message(event):
 #Book
     else:
         sheet = client.open("Bookone").sheet1
-        for k in range(2,14):
+        for k in range(2,21):
             sheet.update_cell(k,3,0)
-        for j in range(1,14):
+        for j in range(1,21):
             match = 0
             for i in event.message.text.split():
                 cell_split = sheet.cell(j,1).value.split()
@@ -95,9 +95,6 @@ def handle_postback(event):
     data = event.postback.data
     if data == "start":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Test Box"))
-        time.sleep(5)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Test Box2"))
-
 
 
 if __name__ == "__main__":
