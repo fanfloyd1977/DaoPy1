@@ -45,6 +45,7 @@ def callback():
         abort(400)
     return "OK"
 
+"""
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     #Intent greeting
@@ -54,3 +55,17 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
+
+"""
+
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    for r in greeting:
+        res = [j for j in r if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
+        if res:
+            value = randrange(1, 7)
+            reply_text = greeting[value]
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=reply_text))
+
