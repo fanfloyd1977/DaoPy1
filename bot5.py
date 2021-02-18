@@ -16,9 +16,9 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 app = Flask(__name__)
 
-#Bot key
-line_bot_api = LineBotApi("ziev+1/ECWJDjw1CkOPjOMofjQ5mft0H0XtZknC/Vu+KnGZzi+2vFVF34UiX+QOdh4JADi+j/xeyPeSiGjyhnvTvKjNijstiixgQeY77aBxJ7R0B8TS/BMCG/y8KheHMwAZ7TJFKN6i5UPBoRzm2BQdB04t89/1O/w1cDnyilFU=")
-handler = WebhookHandler("4088552f2e9ee28de065d9bddce75ab2")
+#Bot MsLee_DF
+line_bot_api = LineBotApi("WJF5U6RE3Or4hvhkrud74QlPwWLWchHlHh/H78fXK37soXeRQ403EGSQ+XNoiHgtNa0k2HpiZhGGofPbU6FD4Bol11nk266Ems7CE7A492ayiM2UefXRKqrcJzWtglydLHQaG9n4nZG7AxsoDIYY3wdB04t89/1O/w1cDnyilFU=")
+handler = WebhookHandler("4f7e8072521893ec7cc87056f203cb28")
 
 #Goole sheet Key
 
@@ -63,9 +63,9 @@ def handle_message(event):
     for r in greeting:
         res = [j for j in r if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
         if res:
-            value = randrange(1, 7)
-            reply_text = greeting[value]
+            #value = randrange(6, 7)
+            #reply_text = greeting[value]
             line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=reply_text))
+            TextSendMessage(text="สวัสดีค่ะ เรามีสินค้าดังนี้ค่ะ"))
 
