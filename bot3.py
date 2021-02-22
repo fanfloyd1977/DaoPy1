@@ -148,9 +148,9 @@ def handle_message(event):
                     size='full',
                     aspect_ratio='20:13',
                     aspect_mode='cover',
-                    action=URIAction(uri='http://example.com', label='label'))
+                    action=URIAction(uri='http://example.com', label='label')
                 ),
-            body=BoxComponent(
+                body=BoxComponent(
                     layout="vertical",
                     contents=[
                         TextComponent(text="Brown Cafe",weight="bold",size="xl"),
@@ -164,6 +164,8 @@ def handle_message(event):
                         )
                     ]
                 )
+            )
+
             message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
             line_bot_api.reply_message(event.reply_token,message)
 
