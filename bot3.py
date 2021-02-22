@@ -8,6 +8,7 @@ from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import *
+import json
 
 app = Flask(__name__)
 
@@ -163,11 +164,8 @@ def handle_message(event):
                         )
                     ]
                 )
-            reply_text = "Flex message"
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text=reply_text))
-
-
-
+            message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
+            line_bot_api.reply_message(event.reply_token,message)
 
 
 #Book
