@@ -2,9 +2,6 @@ import os
 
 from pandas import pandas as pd
 
-
-
-
 from random import randrange
 from flask import Flask, request, abort
 
@@ -140,6 +137,22 @@ def handle_message(event):
             line_bot_api.reply_message(
             event.reply_token,
             StickerSendMessage(package_id=3, sticker_id=value))
+
+#Flex Message
+        if event.message.text.lower() == "flex":
+            bubble = BubbleContainer(
+                direction='ltr',
+                hero=ImageComponent(
+                    url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+                    size='full',
+                    aspect_ratio='20:13',
+                    aspect_mode='cover'
+
+                )
+            )
+
+
+
 #Book
         else:
             data = pd.read_excel(r"Book.xls")
