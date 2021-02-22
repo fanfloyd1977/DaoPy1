@@ -140,16 +140,30 @@ def handle_message(event):
 
 #Flex Message
         if event.message.text.lower() == "flex":
-            reply_text = "Flex message"
-
             bubble = BubbleContainer(
+                direction='ltr',
                 hero=ImageComponent(
                     url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
                     size='full',
                     aspect_ratio='20:13',
                     aspect_mode='cover',
                     action=URIAction(uri='http://example.com', label='label'))
+                ),
+            body=BoxComponent(
+                    layout="vertical",
+                    contents=[
+                        TextComponent(text="Brown Cafe",weight="bold",size="xl"),
+                        BoxComponent(
+                            layout="baseline",margin="md",
+                            contents=[
+
+                            IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
+                            TextComponent(text="4.0",size="sm",color="#999999",margin="md")
+                            ]
+                        )
+                    ]
                 )
+            reply_text = "Flex message"
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text=reply_text))
 
 
