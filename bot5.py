@@ -47,10 +47,6 @@ def callback():
     return "OK"
 
 
-sheet = client.open("Bookone").sheet1
-sheet.update_cell(2,5,0)
-
-
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 #Intent greeting
@@ -126,10 +122,15 @@ def handle_message(event):
 def handle_postback(event):
     data = event.postback.data
     if data == "Ordered":
+        profile = line_bot_api.get_profile()
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="The order has been submitted"))
         sheet = client.open("Booktwo").sheet1
-        x = sheet.cell(2,5).value
-        x +=1
-        sheet.update_cell(2,5,x)
+        sheet.update_cell(2,1,"Hamburger")
+        sheet.update_cell(2,2,"Hamburger")
+        sheet.update_cell(2,3,"Regular")
+        sheet.update_cell(2,4,"250")
+        sheet.update_cell(2,5,1)
+        sheet.update_cell(2,6,profile.display_name)
+
 
 
