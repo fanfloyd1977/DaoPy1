@@ -97,9 +97,13 @@ def handle_message(event):
             ]
         ),
         footer=BoxComponent(
-            layout="vertical",margin="md",
+            layout="vertical",spacing="sm",
             content=[
-                QuickReplyButton(action=PostbackAction(label="ORDER",data="Ordered"))
+                ButtonComponent(
+                    style="link",
+                    height="sm",
+                    action=URIAction(label="ORDER",uri="tel:00000000")
+                )
             ]
 
 
