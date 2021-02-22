@@ -29,6 +29,8 @@ client = gspread.authorize(creds)
 #Intent
 greeting = ["Hello Hello","Hi Hi", "Hi", "Hi, there", "Good day", "สวัสดีครับ", "สวัสดีค่ะ"]
 
+Ordered = 0
+
 @app.route("/")
 def hello():
     return "Hello DAO Flask-Heroku"
@@ -120,7 +122,6 @@ def handle_postback(event):
     if data == "Ordered":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="The order has been submitted"))
         sheet = client.open("Booktwo").sheet1
-        Ordered = sheet.cell(2,5).value + 1
-        sheet.update_cell(2,5,Ordered)
+        sheet.cell(2,5).value += 1
 
 
