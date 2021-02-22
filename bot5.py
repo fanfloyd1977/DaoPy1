@@ -98,15 +98,13 @@ def handle_message(event):
         ),
         footer=BoxComponent(
             layout="vertical",spacing="sm",
-            content=[
+            contents=[
                 ButtonComponent(
                     style="link",
                     height="sm",
                     action=URIAction(label="ORDER",uri="tel:00000000")
                 )
             ]
-
-
         )
     )
 
