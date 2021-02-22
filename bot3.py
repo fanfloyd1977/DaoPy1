@@ -146,7 +146,8 @@ def handle_message(event):
                     url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
                     size='full',
                     aspect_ratio='20:13',
-                    aspect_mode='cover'
+                    aspect_mode='cover',
+                    action=URIAction(uri='http://example.com', label='label')
 
                 )
             )
