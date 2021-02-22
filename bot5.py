@@ -28,7 +28,7 @@ client = gspread.authorize(creds)
 
 #Intent
 greeting = ["Hello Hello","Hi Hi", "Hi", "Hi, there", "Good day", "สวัสดีครับ", "สวัสดีค่ะ"]
-
+N = 1
 
 @app.route("/")
 def hello():
@@ -122,17 +122,18 @@ def handle_message(event):
 def handle_postback(event):
     data = event.postback.data
     if data == "Ordered":
-
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="The order has been submitted"))
-
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
-        sheet.update_cell(2,1,"1")
-        sheet.update_cell(2,2,"Hamburger")
-        sheet.update_cell(2,3,"Regular")
-        sheet.update_cell(2,4,250)
-        sheet.update_cell(2,5,1)
-        sheet.update_cell(2,6,profile.display_name)
+        row = sheet.col_values(1)
+        Num_row = len(row)+1
+        sheet.update_cell(Num_row,1,len(row))
+        sheet.update_cell(Num_row,2,"Hamburger")
+        sheet.update_cell(Num_row,3,"Regular")
+        sheet.update_cell(Num_row,4,250)
+        sheet.update_cell(Num_row,5,1)
+        sheet.update_cell(Num_row,6,profile.display_name)
+        
 
 
 
