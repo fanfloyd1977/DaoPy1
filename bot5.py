@@ -119,4 +119,7 @@ def handle_postback(event):
     data = event.postback.data
     if data == "Ordered":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="The order has been submitted"))
+        sheet = client.open("Booktwo").sheet1
+        sheet.update_cell(2,5,1)
+
 
