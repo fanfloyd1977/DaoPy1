@@ -45,27 +45,63 @@ def callback():
         abort(400)
     return "OK"
 
-"""
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    #Intent greeting
+#Intent greeting
     if event.message.text.lower() in [low.lower() for low in greeting]:
         value = randrange(0, len(greeting))
         reply_text = greeting[value]
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
+#Flex message
+    if event.message.text.lower() == "flex":
+        bubble = BubbleContainer(
+        direction='ltr',
+        hero=ImageComponent(
+            url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+            size='full',
+            aspect_ratio='20:13',
+            aspect_mode='cover',
+            action=URIAction(uri='http://example.com', label='label')
+        ),
+        body=BoxComponent(
+            layout="vertical",
+            contents=[
+                TextComponent(text="Brown Cafe",weight="bold",size="xl"),
+                BoxComponent(
+                    layout="baseline",margin="md",
+                    contents=[
 
-"""
+                        IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
+                        TextComponent(text="250 BHT",size="sm",color="#999999",margin="md"),
+                        TextComponent(text="450 kcl",size="sm",color="#999999",margin="md",align="end")
 
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    for r in greeting:
-        res = [j for j in r if any(k.casefold() in j.casefold() for k in event.message.text.lower())]
-        if res:
-            #value = randrange(6, 7)
-            #reply_text = greeting[value]
-            line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="สวัสดีค่ะ เรามีสินค้าดังนี้ค่ะ"))
+                    ]
+                ),
+                BoxComponent(
+                    layout="baseline",margin="md",
+                    contents=[
+                        IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"),
+                        TextComponent(text="450 BHT",size="sm",color="#999999",margin="md"),
+                        TextComponent(text="750 kcl",size="sm",color="#999999",margin="md",align="end")
+
+                    ]
+
+                ),
+                BoxComponent(
+                    layout="vertical",margin="md",
+                    contents=[TextComponent(text="Sauce, Onions, Pickles, lettuce & Cheese",size="xxs",color="#999999",margin="md"),]
+                )
+            ]
+        )
+    )
+
+    message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
+    line_bot_api.reply_message(event.reply_token,message)
+
+
+
+
 
