@@ -75,8 +75,8 @@ def handle_message(event):
                     contents=[
 
                         IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
-                        TextComponent(text="250 BHT",size="sm",color="#999999",margin="md"),
-                        TextComponent(text="450 kcl",size="sm",color="#999999",margin="md",align="end")
+                        TextComponent(text="250 BHT",size="sm",color="#976608",margin="md"),
+                        TextComponent(text="450 kcl",size="sm",color="#976608",margin="md",align="end")
 
                     ]
                 ),
@@ -102,7 +102,8 @@ def handle_message(event):
                 ButtonComponent(
                     style="link",
                     height="sm",
-                    action=URIAction(label="ORDER",uri="tel:00000000")
+                    action=PostbackAction(label="ORDER", data="Ordered")
+                    # URIAction(label="ORDER",uri="tel:00000000")
                 )
             ]
         )
