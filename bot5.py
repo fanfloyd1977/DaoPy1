@@ -84,8 +84,8 @@ def handle_message(event):
                     layout="baseline",margin="md",
                     contents=[
                         IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"),
-                        TextComponent(text="450 BHT",size="sm",color="#999999",margin="md"),
-                        TextComponent(text="750 kcl",size="sm",color="#999999",margin="md",align="end")
+                        TextComponent(text="450 BHT",size="sm",color="#976608",margin="md"),
+                        TextComponent(text="750 kcl",size="sm",color="#976608",margin="md",align="end")
 
                     ]
 
@@ -95,6 +95,14 @@ def handle_message(event):
                     contents=[TextComponent(text="Sauce, Onions, Pickles, lettuce & Cheese",size="xxs",color="#999999",margin="md"),]
                 )
             ]
+        ),
+        footer=BoxComponent(
+            layout="vertical",margin="md",
+            content=[
+                QuickReplyButton(action=PostbackAction(label="ORDER",data="Ordered"))
+            ]
+
+
         )
     )
 
