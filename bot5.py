@@ -122,15 +122,17 @@ def handle_message(event):
 def handle_postback(event):
     data = event.postback.data
     if data == "Ordered":
+
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="The order has been submitted"))
-        #profile = line_bot_api.get_profile()
+
+        profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         sheet.update_cell(2,1,"1")
         sheet.update_cell(2,2,"Hamburger")
         sheet.update_cell(2,3,"Regular")
         sheet.update_cell(2,4,250)
         sheet.update_cell(2,5,1)
-        #sheet.update_cell(2,6,profile.display_name)
+        sheet.update_cell(2,6,profile.display_name)
 
 
 
