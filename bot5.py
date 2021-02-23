@@ -126,8 +126,8 @@ def handle_message(event):
                 MessageAction(label='Translate Rice', text='米')
             ]),
         ])
-        template_message = TemplateSendMessage(
-            alt_text='Carousel alt text', template=carousel_template)
+        template_message = FlexSendMessage(
+            alt_text="Carousel alt text", contents=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
 
