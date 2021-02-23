@@ -126,16 +126,16 @@ def handle_message(event):
                               title="this is menu1",
                               text="Descp1",
                               actions=[
-                                  PostbackAction(
+                                  PostbackTemplateAction(
                                       label="postback1",
                                       text="postback text1",
                                       data="action=buy&itemid=1"
                                   ),
-                                  MessageAction(
+                                  MessageTemplateAction(
                                       label="message1",
                                       text="message text1"
                                   ),
-                                  URIAction(
+                                  URITemplateAction(
                                       label="uri1",
                                       uri="http://example.com/1"
                                   )
@@ -146,16 +146,16 @@ def handle_message(event):
                               title="this is menu 2",
                               text="desp2",
                               actions=[
-                                  PostbackAction(
+                                  PostbackTemplateAction(
                                       label="postback2",
                                       text="postback text2",
                                       data="action=buy&itemid=2"
                                   ),
-                                  MessageAction(
+                                  MessageTemplateAction(
                                       label="message2",
                                       text="message text2"
                                   ),
-                                  URIAction(
+                                  URITemplateAction(
                                       label="uri2",
                                       uri="http://example.com/2"
                                   )
@@ -168,7 +168,8 @@ def handle_message(event):
         )
     )
 
-    line_bot_api.reply_message(event.reply_token,menu)
+
+    line_bot_api.reply_message(event.reply_token,"menu")
 
 
 @handler.add(PostbackEvent)
