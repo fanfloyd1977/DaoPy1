@@ -57,6 +57,20 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
+
+    if event.message.text.lower() == "bill":
+        profile = line_bot_api.get_profile(event.source.user_id)
+        sheet = client.open("Booktwo").sheet1
+        sum = 0
+        num_row = sheet.col_values(1)
+        row=len(num_row)
+        for i in range(2,row+1):
+            cus = sheet.row_values(i)
+            if cus[5] == profile.display_name:
+                sum = sum + int(cus[3])
+    Bill_message = TextSendMessage(text="Total Bill = " + str(sum))
+    line_bot_api.reply_message(event.reply_token, Bill_message)
+
 #Intent Menu
 
     if event.message.text.lower() == "menu":
