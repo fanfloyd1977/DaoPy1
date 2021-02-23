@@ -115,31 +115,31 @@ def handle_message(event):
 
 #Carousel
 
-    if event.message.text.lower() == "carousel":
-        menu = TemplateSendMessage(
-            alt_text="carousel template",
-            template=ImageCarouselTemplate(
-                columns=[
-                    ImageCarouselColumn(
-                        image_url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
-                        action=PostbackAction(
-                            label="postback1",
-                            text="postback text1",
-                            data="action=buy&itemed=1"
-                        )
-                    ),
-                    ImageCarouselColumn(
-                        image_url="https://images-gmi-pmc.edge-generalmills.com/e59f255c-7498-4b84-9c9d-e578bf5d88fc.jpg",
-                        action=PostbackAction(
-                            label="postback2",
-                            text="postback text2",
-                            data="action=buy&itemed=2"
-                        )
-                    )
-                ]
-        )
-        )
-    line_bot_api.reply_message(event.reply_token,menu)
+    if event.message.text.lower() == "menu":
+        Image_menu = TemplateSendMessage(
+        alt_text="carousel template",
+        template=ImageCarouselTemplate(
+        columns=[
+            ImageCarouselColumn(
+                image_url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+                action=PostbackTemplateAction(
+                    label="postback1",
+                    text="postback text1",
+                    data="action=buy&itemid=1"
+                )
+            ),
+            ImageCarouselColumn(
+                image_url="https://images-gmi-pmc.edge-generalmills.com/e59f255c-7498-4b84-9c9d-e578bf5d88fc.jpg",
+                action=PostbackTemplateAction(
+                    label="postback2",
+                    text="postback text2",
+                    data="action=buy&itemid=2"
+                )
+            )
+        ]
+    )
+    )
+    line_bot_api.reply_message(event.reply_token,Image_menu)
 
 
 @handler.add(PostbackEvent)
