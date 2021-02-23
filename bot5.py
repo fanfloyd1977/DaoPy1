@@ -139,7 +139,8 @@ def handle_message(event):
         ]
     )
     )
-    line_bot_api.reply_message(event.reply_token,Image_menu)
+    M_message = FlexSendMessage(alt_text="Hello menu", contents=Image_menu)
+    line_bot_api.reply_message(event.reply_token,M_message)
 
 
 @handler.add(PostbackEvent)
