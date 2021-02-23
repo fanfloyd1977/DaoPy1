@@ -116,18 +116,18 @@ def handle_message(event):
 #Carousel
 
     if event.message.text.lower() == "Menu":
-        Menu = CarouselTemplate(columns=[
-            CarouselColumn(text="hoge1",title="fuga1",actions=[
-                URIAction(label="Go to line.me", uri="https://line.me"),
-                PostbackAction(label="ping",data="ping")
-            ]),
-            CarouselColumn(text="hoge2",title="fuga2",actions=[
-                URIAction(label="Go to line.me", uri="https://line.me"),
-                PostbackAction(label="Translate Rice",text="ข้าว")
+        Menu = ImageCarouselTemplate(columns=[
+            ImageCarouselColumn(image_url="https://via.placeholder.com/1024x1024",
+            action=DatetimePickerAction(label="datetime",data="datetime_postback",
+                                        mode="datetime")),
 
-            ]),
-            ])
-    template_message = TemplateSendMessage(alt_text="Carousel alt text", template=Menu)
+            ImageCarouselColumn(image_url="https://via.placeholder.com/1024x1024",
+            action=DatetimePickerAction(label='date',data='date_postback',
+                                        mode='date'))
+        ])
+
+
+    template_message = TemplateSendMessage(alt_text="ImageCarousel alt text", template=Menu)
     line_bot_api.reply_message(event.reply_token,template_message)
 
 
