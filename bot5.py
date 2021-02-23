@@ -117,6 +117,7 @@ def handle_message(event):
 #Carousel
 
     if event.message.text.lower() == "button":
+
         button_template = ButtonsTemplate(
             title="My Button 1", text="Menu1",actions=[
                 URIAction(label='Go to line.me', uri='https://line.me'),
@@ -126,7 +127,7 @@ def handle_message(event):
 
 
             ])
-    template_message = TemplateSendMessage(alt_text="Buttons alt text",template=button_template)
+    template_message = CarouselContainer(alt_text="Hello Carousel", contents=button_template)
     line_bot_api.reply_message(event.reply_token,template_message)
 
 
