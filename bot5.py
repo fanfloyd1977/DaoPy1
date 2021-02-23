@@ -117,30 +117,30 @@ def handle_message(event):
 #Carousel
 
     if event.message.text.lower() == "menu":
-        image_carousel_template_message = TemplateSendMessage(
-            alt_text='ImageCarousel template',
-            template=ImageCarouselTemplate(
-                columns=[
-                    ImageCarouselColumn(
-                        image_url='https://example.com/item1.jpg',
-                        action=PostbackAction(
-                            label='postback1',
-                            display_text='postback text1',
-                            data='action=buy&itemid=1'
-                        )
+        buttons_template_message = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://example.com/image.jpg',
+                title='Menu',
+                text='Please select',
+                actions=[
+                    PostbackAction(
+                        label='postback',
+                        display_text='postback text',
+                        data='action=buy&itemid=1'
                     ),
-                    ImageCarouselColumn(
-                        image_url='https://example.com/item2.jpg',
-                        action=PostbackAction(
-                            label='postback2',
-                            display_text='postback text2',
-                            data='action=buy&itemid=2'
-                        )
+                    MessageAction(
+                        label='message',
+                        text='message text'
+                    ),
+                    URIAction(
+                        label='uri',
+                        uri='http://example.com/'
                     )
                 ]
             )
         )
-    line_bot_api.push_message(event.reply_token,image_carousel_template_message)
+    line_bot_api.reply_message(event.reply_token,buttons_template_message)
 
 
 
