@@ -57,6 +57,15 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
+#Test Intent
+
+    if event.message.text.lower() == "button":
+        message = TextSendMessage(text="Hello world")
+        line_bot_api.reply_message(event.reply_token,message)
+
+
+
+
 #Flex message
     if event.message.text.lower() == "flex":
         bubble = BubbleContainer(
@@ -114,11 +123,9 @@ def handle_message(event):
     message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
     line_bot_api.reply_message(event.reply_token,message)
 
-#confirm
 
-    if event.message.text.lower() == "button":
-        message = TextSendMessage(text="Hello world")
-    line_bot_api.reply_message(event.reply_token,message)
+
+
 
 
 
