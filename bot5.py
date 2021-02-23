@@ -77,14 +77,12 @@ def handle_message(event):
                 aspect_ratio='20:13',
                 aspect_mode='cover',
                 action=URIAction(uri='http://example.com', label='label')
-            ),
-            footer=BoxComponent(
-                layout="vertical",spacing="sm",
-                contents=[TextComponent(text=sum,size="sm",color="#976608",margin="md",align="end")]
             ))
+
 
         Bill_message = FlexSendMessage(alt_text="Hello Bill", contents=Bill_template)
         line_bot_api.reply_message(event.reply_token, Bill_message)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
 
 #Intent Menu
 
