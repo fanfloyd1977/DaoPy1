@@ -57,9 +57,9 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
-#Test Intent
+#Intent Menu
 
-    if event.message.text.lower() == "button":
+    if event.message.text.lower() == "menu":
         B_message = TemplateSendMessage(
             alt_text='ImageCarousel template',
             template=ImageCarouselTemplate(
@@ -99,7 +99,7 @@ def handle_message(event):
 @handler.add(PostbackEvent)
 def handle_postback(event):
     data = event.postback.data
-    if data == "Ordered":
+    if data == "Ham Regular":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="The order has been submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
@@ -113,6 +113,19 @@ def handle_postback(event):
         sheet.update_cell(Num_row,6,profile.display_name)
         #sheet.update_cell(Num_row,7,profile.user_id)
         #sheet.update_cell(Num_row,8,profile.picture_url)
+    if data == "Ham Large":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="The order has been submitted"))
+        profile = line_bot_api.get_profile(event.source.user_id)
+        sheet = client.open("Booktwo").sheet1
+        row = sheet.col_values(1)
+        Num_row = len(row)+1
+        sheet.update_cell(Num_row,1,len(row))
+        sheet.update_cell(Num_row,2,"Hamburger")
+        sheet.update_cell(Num_row,3,"Large")
+        sheet.update_cell(Num_row,4,450)
+        sheet.update_cell(Num_row,5,1)
+        sheet.update_cell(Num_row,6,profile.display_name)
+
 
     #Flex message
     if data == "Ham Burger":
@@ -159,11 +172,17 @@ def handle_postback(event):
                 layout="vertical",spacing="sm",
                 contents=[
                     ButtonComponent(
-                        style="link",
+                        style="Primary",
                         height="sm",
-                        action=PostbackAction(label="ORDER", data="Ordered")
+                        action=PostbackAction(label="REGULAR", data="Ham Regular")
                         # URIAction(label="ORDER",uri="tel:00000000")
+                    ),
+                    ButtonComponent(
+                        style="Primary",
+                        height="sm",
+                        action=PostbackAction(label="LARGE", data="Ham Large")
                     )
+
                 ]
             )
         )
