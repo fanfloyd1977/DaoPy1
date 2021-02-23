@@ -60,7 +60,7 @@ def handle_message(event):
 #Test Intent
 
     if event.message.text.lower() == "button":
-        message = TemplateSendMessage(
+        B_message = TemplateSendMessage(
             alt_text='ImageCarousel template',
             template=ImageCarouselTemplate(
                 columns=[
@@ -83,7 +83,7 @@ def handle_message(event):
                 ]
             )
         )
-    line_bot_api.reply_message(event.reply_token, message)
+    line_bot_api.reply_message(event.reply_token, B_message)
 
 
 #Flex message
