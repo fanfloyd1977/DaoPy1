@@ -116,31 +116,18 @@ def handle_message(event):
 
 #Carousel
 
-    if event.message.text.lower() == "menu":
-        buttons_template_message = TemplateSendMessage(
-            alt_text='Buttons template',
-            template=ButtonsTemplate(
-                thumbnail_image_url='https://example.com/image.jpg',
-                title='Menu',
-                text='Please select',
-                actions=[
-                    PostbackAction(
-                        label='postback',
-                        display_text='postback text',
-                        data='action=buy&itemid=1'
-                    ),
-                    MessageAction(
-                        label='message',
-                        text='message text'
-                    ),
-                    URIAction(
-                        label='uri',
-                        uri='https://example.com/'
-                    )
-                ]
-            )
-        )
-    line_bot_api.reply_message(event.reply_token,buttons_template_message)
+    if event.message.text.lower() == "button":
+        button_template = ButtonsTemplate(
+            title="My Button 1", text="Menu1",actions=[
+                URIAction(label='Go to line.me', uri='https://line.me'),
+                PostbackAction(label='ping', data='ping'),
+                PostbackAction(label='ping with text', data='ping', text='ping'),
+                MessageAction(label='Translate Rice', text='米')
+
+
+            ])
+    template_message = TemplateSendMessage(alt_text="Buttons alt text",template=button_template)
+    line_bot_api.reply_message(event.reply_token,template_message)
 
 
 
