@@ -135,7 +135,7 @@ def handle_message(event):
                     ),
                     URIAction(
                         label='uri',
-                        uri='http://example.com/'
+                        uri='https://example.com/'
                     )
                 ]
             )
