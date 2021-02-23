@@ -79,17 +79,13 @@ def handle_message(event):
                 action=URIAction(uri='http://example.com', label='label')
             ),
             body=BoxComponent(
-                layout="vertical",
+                layout="baseline",margin="md",
                 contents=[
-                    TextComponent(text="Miss Lee Cafe",weight="bold",size="xl"),
-                    BoxComponent(
-                        layout="baseline",margin="md",
-                        contents=[
-                         TextComponent(text="Total : ",size="sm",color="#976608",margin="md"),
-                         TextComponent(text=sum,size="sm",color="#976608",margin="md",align="end")]
-                    )
+                TextComponent(text="Total : ",size="sm",color="#976608",margin="md"),
+                TextComponent(text=sum,size="sm",color="#976608",margin="md",align="end")]
+                    ))
 
-            ]))
+
 
         Bill_message = FlexSendMessage(alt_text="Hello Bill", contents=Bill_template)
         line_bot_api.reply_message(event.reply_token, Bill_message)
