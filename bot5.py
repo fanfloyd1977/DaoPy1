@@ -115,7 +115,7 @@ def handle_postback(event):
         #sheet.update_cell(Num_row,8,profile.picture_url)
 
     #Flex message
-    if event.message.text.lower() == "Ham Burger":
+    if data == "Ham Burger":
         bubble = BubbleContainer(
             direction='ltr',
             hero=ImageComponent(
