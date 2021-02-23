@@ -160,10 +160,15 @@ def handle_postback(event):
                 layout="vertical",spacing="sm",
                 contents=[
                     ButtonComponent(
-                        style="link",
+                        style="primary",
                         height="sm",
                         action=PostbackAction(label="REGULAR", data="Ham Regular")
                         # URIAction(label="ORDER",uri="tel:00000000")
+                    ),
+                    ButtonComponent(
+                        style="primary",
+                        height="sm",
+                        action=PostbackAction(label="LARGE", data="Ham Large")
                     )
 
 
