@@ -68,8 +68,8 @@ def handle_message(event):
             cus = sheet.row_values(i)
             if cus[5] == profile.display_name:
                 sum = sum + int(cus[3])
-    Bill_message = TextSendMessage(text="Total Bill = " + str(sum))
-    line_bot_api.reply_message(event.reply_token, Bill_message)
+        Bill_message = TextSendMessage(text="Total Bill = " + str(sum))
+        line_bot_api.reply_message(event.reply_token, Bill_message)
 
 #Intent Menu
 
