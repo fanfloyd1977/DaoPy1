@@ -133,7 +133,10 @@ def handle_postback(event):
         sheet.update_cell(Num_row,4,250)
         sheet.update_cell(Num_row,5,1)
         sheet.update_cell(Num_row,6,profile.display_name)
-        
+        sheet.update_cell(Num_row,7,profile.user_id)
+        sheet.update_cell(Num_row,8,profile.picture_url)
+
+
 
 
 
