@@ -113,6 +113,22 @@ def handle_message(event):
     message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
     line_bot_api.reply_message(event.reply_token,message)
 
+#Carousel
+
+    if event.message.text.lower() == "Menu":
+        Menu = CarouselTemplate(columns=[
+            CarouselColumn(text="hoge1",title="fuga1",actions=[
+                URIAction(label="Go to line.me", uri="https://line.me"),
+                PostbackAction(label="ping",data="ping")
+            ]),
+            CarouselColumn(text="hoge2",title="fuga2",actions=[
+                URIAction(label="Go to line.me", uri="https://line.me"),
+                PostbackAction(label="Translate Rice",text="ข้าว")
+
+            ]),
+            ])
+    template_message = TemplateSendMessage(alt_text="Carousel alt text", template=Menu)
+    line_bot_api.reply_message(event.reply_token,template_message)
 
 
 
@@ -133,8 +149,8 @@ def handle_postback(event):
         sheet.update_cell(Num_row,4,250)
         sheet.update_cell(Num_row,5,1)
         sheet.update_cell(Num_row,6,profile.display_name)
-        sheet.update_cell(Num_row,7,profile.user_id)
-        sheet.update_cell(Num_row,8,profile.picture_url)
+        #sheet.update_cell(Num_row,7,profile.user_id)
+        #sheet.update_cell(Num_row,8,profile.picture_url)
 
 
 
