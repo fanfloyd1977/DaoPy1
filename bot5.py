@@ -68,7 +68,17 @@ def handle_message(event):
             cus = sheet.row_values(i)
             if cus[5] == profile.display_name:
                 sum = sum + int(cus[3])
-        Bill_message = TextSendMessage(text="Total Bill = " + str(sum))
+
+        Bill_template = BubbleContainer(
+            direction='ltr',
+            hero=ImageComponent(
+                url="https://thumbs.dreamstime.com/b/open-bill-holder-check-presenter-restaurant-receipt-money-banknotes-coins-top-view-customer-s-payment-open-bill-142943120.jpg",
+                size='full',
+                aspect_ratio='20:13',
+                aspect_mode='cover',
+                action=URIAction(uri='http://example.com', label='label')))
+
+        Bill_message = FlexSendMessage(alt_text="Hello Bill", contents=Bill_template)
         line_bot_api.reply_message(event.reply_token, Bill_message)
 
 #Intent Menu
