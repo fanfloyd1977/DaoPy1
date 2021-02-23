@@ -81,7 +81,7 @@ def handle_message(event):
 
 
         Bill_message = FlexSendMessage(alt_text="Hello Bill", contents=Bill_template)
-        line_bot_api.reply_message(event.reply_token, Bill_message)
+        #line_bot_api.reply_message(event.reply_token, Bill_message)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
 
 #Intent Menu
