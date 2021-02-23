@@ -116,19 +116,31 @@ def handle_message(event):
 #Carousel
 
     if event.message.text.lower() == "carousel":
-        carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='hoge1', title='fuga1', actions=[
-                URIAction(label='Go to line.me', uri='https://line.me'),
-                PostbackAction(label='ping', data='ping')
-            ]),
-            CarouselColumn(text='hoge2', title='fuga2', actions=[
-                PostbackAction(label='ping with text', data='ping', text='ping'),
-                MessageAction(label='Translate Rice', text='米')
-            ]),
-        ])
-        template_message = FlexSendMessage(
-            alt_text="Carousel alt text", contents=carousel_template)
-        line_bot_api.reply_message(event.reply_token, template_message)
+        menu = TemplateSendMessage(
+            alt_text="carousel template",
+            template=ImageCarouselTemplate(
+                columns=[
+                    ImageCarouselColumn(
+                        image_url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+                        action=PostbackAction(
+                            label="postback1",
+                            text="postback text1",
+                            data="action=buy&itemed=1"
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url="https://images-gmi-pmc.edge-generalmills.com/e59f255c-7498-4b84-9c9d-e578bf5d88fc.jpg",
+                        action=PostbackAction(
+                            label="postback2",
+                            text="postback text2",
+                            data="action=buy&itemed=2"
+                        )
+                    )
+                ]
+        )
+
+
+        )
 
 
 @handler.add(PostbackEvent)
