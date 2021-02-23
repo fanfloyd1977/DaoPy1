@@ -117,59 +117,31 @@ def handle_message(event):
 #Carousel
 
     if event.message.text.lower() == "menu":
-        menu = TemplateSendMessage(
-            alt_text="Carousel template",
-            template=CarouselTemplate(
-                      columns=[
-                          CarouselColumn(
-                              thumbnail_image_url="https://images-gmi-pmc.edge-generalmills.com/e59f255c-7498-4b84-9c9d-e578bf5d88fc.jpg",
-                              title="this is menu1",
-                              text="Descp1",
-                              actions=[
-                                  PostbackTemplateAction(
-                                      label="postback1",
-                                      text="postback text1",
-                                      data="action=buy&itemid=1"
-                                  ),
-                                  MessageTemplateAction(
-                                      label="message1",
-                                      text="message text1"
-                                  ),
-                                  URITemplateAction(
-                                      label="uri1",
-                                      uri="http://example.com/1"
-                                  )
-                              ]
-                          ),
-                          CarouselColumn(
-                              thumbnail_image_url="https://media3.s-nbcnews.com/i/newscms/2020_27/1586837/hotdogs-te-main-200702_1e1ea98797356fd7f729a2b294d7bb26.jpg",
-                              title="this is menu 2",
-                              text="desp2",
-                              actions=[
-                                  PostbackTemplateAction(
-                                      label="postback2",
-                                      text="postback text2",
-                                      data="action=buy&itemid=2"
-                                  ),
-                                  MessageTemplateAction(
-                                      label="message2",
-                                      text="message text2"
-                                  ),
-                                  URITemplateAction(
-                                      label="uri2",
-                                      uri="http://example.com/2"
-                                  )
-                              ]
-
-                          )
-                      ]
-
-
+        image_carousel_template_message = TemplateSendMessage(
+            alt_text='ImageCarousel template',
+            template=ImageCarouselTemplate(
+                columns=[
+                    ImageCarouselColumn(
+                        image_url='https://example.com/item1.jpg',
+                        action=PostbackAction(
+                            label='postback1',
+                            display_text='postback text1',
+                            data='action=buy&itemid=1'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://example.com/item2.jpg',
+                        action=PostbackAction(
+                            label='postback2',
+                            display_text='postback text2',
+                            data='action=buy&itemid=2'
+                        )
+                    )
+                ]
+            )
         )
-    )
+    line_bot_api.push_message(event.reply_token,image_carousel_template_message)
 
-
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text="Test Menu"))
 
 
 @handler.add(PostbackEvent)
