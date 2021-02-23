@@ -116,15 +116,16 @@ def handle_message(event):
 #Carousel
 
     if event.message.text.lower() == "Menu":
-        Menu = ImageCarouselTemplate(columns=[
-            ImageCarouselColumn(image_url="https://via.placeholder.com/1024x1024",
-            action=DatetimePickerAction(label="datetime",data="datetime_postback",
-                                        mode="datetime")),
-
-            ImageCarouselColumn(image_url="https://via.placeholder.com/1024x1024",
-            action=DatetimePickerAction(label='date',data='date_postback',
-                                        mode='date'))
-        ])
+        Menu = CarouselContainer(
+            direction='ltr',
+            hero=ImageComponent(
+                url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+                size='full',
+                aspect_ratio='20:13',
+                aspect_mode='cover',
+                action=URIAction(uri='http://example.com', label='label')
+            )
+        )
 
 
     template_message = TemplateSendMessage(alt_text="ImageCarousel alt text", template=Menu)
