@@ -115,24 +115,20 @@ def handle_message(event):
 
 #Carousel
 
-    if event.message.text.lower() == "Menu":
-        Menu = CarouselContainer(
-            direction='ltr',
-            hero=ImageComponent(
-                url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
-                size='full',
-                aspect_ratio='20:13',
-                aspect_mode='cover',
-                action=URIAction(uri='http://example.com', label='label')
-            )
-        )
-
-
-    template_message = TemplateSendMessage(alt_text="ImageCarousel alt text", template=Menu)
-    line_bot_api.reply_message(event.reply_token,template_message)
-
-
-
+    if event.message.text.lower() == "carousel":
+        carousel_template = CarouselTemplate(columns=[
+            CarouselColumn(text='hoge1', title='fuga1', actions=[
+                URIAction(label='Go to line.me', uri='https://line.me'),
+                PostbackAction(label='ping', data='ping')
+            ]),
+            CarouselColumn(text='hoge2', title='fuga2', actions=[
+                PostbackAction(label='ping with text', data='ping', text='ping'),
+                MessageAction(label='Translate Rice', text='米')
+            ]),
+        ])
+        template_message = TemplateSendMessage(
+            alt_text='Carousel alt text', template=carousel_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
 
 
 @handler.add(PostbackEvent)
