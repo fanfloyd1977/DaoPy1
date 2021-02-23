@@ -114,21 +114,11 @@ def handle_message(event):
     message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
     line_bot_api.reply_message(event.reply_token,message)
 
-#Carousel
+#confirm
 
     if event.message.text.lower() == "button":
-
-        button_template = ButtonsTemplate(
-            title="My Button 1", text="Menu1",actions=[
-                URIAction(label='Go to line.me', uri='https://line.me'),
-                PostbackAction(label='ping', data='ping'),
-                PostbackAction(label='ping with text', data='ping', text='ping'),
-                MessageAction(label='Translate Rice', text='米')
-
-
-            ])
-    template_message = CarouselContainer(alt_text="Hello Carousel", contents=button_template)
-    line_bot_api.reply_message(event.reply_token,template_message)
+        message = TextSendMessage(text="Hello world")
+    line_bot_api.reply_message(event.reply_token,message)
 
 
 
