@@ -116,13 +116,11 @@ def handle_message(event):
 #Carousel
 
     if event.message.text.lower() == "menu":
-        Image_menu = TemplateSendMessage(
-        alt_text="carousel template",
-        template=ImageCarouselTemplate(
+        Image_menu = ImageCarouselTemplate(
         columns=[
             ImageCarouselColumn(
                 image_url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
-                action=PostbackTemplateAction(
+                action=PostbackAction(
                     label="postback1",
                     text="postback text1",
                     data="action=buy&itemid=1"
@@ -130,7 +128,7 @@ def handle_message(event):
             ),
             ImageCarouselColumn(
                 image_url="https://images-gmi-pmc.edge-generalmills.com/e59f255c-7498-4b84-9c9d-e578bf5d88fc.jpg",
-                action=PostbackTemplateAction(
+                action=PostbackAction(
                     label="postback2",
                     text="postback text2",
                     data="action=buy&itemid=2"
@@ -138,9 +136,8 @@ def handle_message(event):
             )
         ]
     )
-    )
-    M_message = FlexSendMessage(alt_text="Hello menu", contents=Image_menu)
-    line_bot_api.reply_message(event.reply_token,M_message)
+    template_message = TemplateSendMessage(alt_text="ImageCarousel alt text",template=Image_menu)
+    line_bot_api.reply_message(event.reply_token,template_message)
 
 
 @handler.add(PostbackEvent)
