@@ -65,9 +65,17 @@ def handle_message(event):
             template=ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
+                        image_url='https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png',
+                        action=PostbackTemplateAction(
+                            label='Ham Burger',
+                            text='Ham Burger',
+                            data='Ham Burger'
+                        )
+                    ),
+                    ImageCarouselColumn(
                         image_url='https://images-gmi-pmc.edge-generalmills.com/e59f255c-7498-4b84-9c9d-e578bf5d88fc.jpg',
                         action=PostbackTemplateAction(
-                            label='postback1',
+                            label='Taco',
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -75,7 +83,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url='https://media3.s-nbcnews.com/i/newscms/2020_27/1586837/hotdogs-te-main-200702_1e1ea98797356fd7f729a2b294d7bb26.jpg',
                         action=PostbackTemplateAction(
-                            label='postback2',
+                            label='Hotdog',
                             text='postback text2',
                             data='action=buy&itemid=2'
                         )
@@ -84,67 +92,6 @@ def handle_message(event):
             )
         )
     line_bot_api.reply_message(event.reply_token, B_message)
-
-
-#Flex message
-    if event.message.text.lower() == "flex":
-        bubble = BubbleContainer(
-        direction='ltr',
-        hero=ImageComponent(
-            url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
-            size='full',
-            aspect_ratio='20:13',
-            aspect_mode='cover',
-            action=URIAction(uri='http://example.com', label='label')
-        ),
-        body=BoxComponent(
-            layout="vertical",
-            contents=[
-                TextComponent(text="Brown Cafe",weight="bold",size="xl"),
-                BoxComponent(
-                    layout="baseline",margin="md",
-                    contents=[
-
-                        IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
-                        TextComponent(text="250 BHT",size="sm",color="#976608",margin="md"),
-                        TextComponent(text="450 kcl",size="sm",color="#976608",margin="md",align="end")
-
-                    ]
-                ),
-                BoxComponent(
-                    layout="baseline",margin="md",
-                    contents=[
-                        IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"),
-                        TextComponent(text="450 BHT",size="sm",color="#976608",margin="md"),
-                        TextComponent(text="750 kcl",size="sm",color="#976608",margin="md",align="end")
-
-                    ]
-
-                ),
-                BoxComponent(
-                    layout="vertical",margin="md",
-                    contents=[TextComponent(text="Sauce, Onions, Pickles, lettuce & Cheese",size="xxs",color="#999999",margin="md"),]
-                )
-            ]
-        ),
-        footer=BoxComponent(
-            layout="vertical",spacing="sm",
-            contents=[
-                ButtonComponent(
-                    style="link",
-                    height="sm",
-                    action=PostbackAction(label="ORDER", data="Ordered")
-                    # URIAction(label="ORDER",uri="tel:00000000")
-                )
-            ]
-        )
-    )
-
-    message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
-    line_bot_api.reply_message(event.reply_token,message)
-
-
-
 
 
 
@@ -166,6 +113,63 @@ def handle_postback(event):
         sheet.update_cell(Num_row,6,profile.display_name)
         #sheet.update_cell(Num_row,7,profile.user_id)
         #sheet.update_cell(Num_row,8,profile.picture_url)
+
+    #Flex message
+    if event.message.text.lower() == "Ham Burger":
+        bubble = BubbleContainer(
+            direction='ltr',
+            hero=ImageComponent(
+                url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+                size='full',
+                aspect_ratio='20:13',
+                aspect_mode='cover',
+                action=URIAction(uri='http://example.com', label='label')
+            ),
+            body=BoxComponent(
+                layout="vertical",
+                contents=[
+                    TextComponent(text="Brown Cafe",weight="bold",size="xl"),
+                    BoxComponent(
+                        layout="baseline",margin="md",
+                        contents=[
+
+                            IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
+                            TextComponent(text="250 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="450 kcl",size="sm",color="#976608",margin="md",align="end")
+
+                        ]
+                    ),
+                    BoxComponent(
+                        layout="baseline",margin="md",
+                        contents=[
+                            IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"),
+                            TextComponent(text="450 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="750 kcl",size="sm",color="#976608",margin="md",align="end")
+
+                        ]
+
+                    ),
+                    BoxComponent(
+                        layout="vertical",margin="md",
+                        contents=[TextComponent(text="Sauce, Onions, Pickles, lettuce & Cheese",size="xxs",color="#999999",margin="md"),]
+                    )
+                ]
+            ),
+            footer=BoxComponent(
+                layout="vertical",spacing="sm",
+                contents=[
+                    ButtonComponent(
+                        style="link",
+                        height="sm",
+                        action=PostbackAction(label="ORDER", data="Ordered")
+                        # URIAction(label="ORDER",uri="tel:00000000")
+                    )
+                ]
+            )
+        )
+
+    message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
+    line_bot_api.reply_message(event.reply_token,message)
 
 
 
