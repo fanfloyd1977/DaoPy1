@@ -248,7 +248,7 @@ def handle_postback(event):
     line_bot_api.reply_message(event.reply_token,message)
 
     if data == "Taco":
-        bubble = BubbleContainer(
+        T_bubble = BubbleContainer(
             direction='ltr',
             hero=ImageComponent(
                 url="https://images-gmi-pmc.edge-generalmills.com/e59f255c-7498-4b84-9c9d-e578bf5d88fc.jpg",
@@ -309,6 +309,6 @@ def handle_postback(event):
             )
         )
 
-    message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
+    message = FlexSendMessage(alt_text="Hello Flex", contents=T_bubble)
     line_bot_api.reply_message(event.reply_token,message)
 
