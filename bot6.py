@@ -126,7 +126,7 @@ def handle_message(event):
     line_bot_api.reply_message(event.reply_token, B_message)
 
 #Intent Menu
-    if event.message.text.lower() == "table":
+    if event.message.text.lower() == "table number":
         T_message = TemplateSendMessage(
         alt_text='ImageCarousel template',
         template=ImageCarouselTemplate(
