@@ -246,8 +246,8 @@ def handle_postback(event):
             )
         )
 
-    message = FlexSendMessage(alt_text="Hello T_bubble", contents=T_bubble)
-    line_bot_api.reply_message(event.reply_token,message)
+        message = FlexSendMessage(alt_text="Hello T_bubble", contents=T_bubble)
+        line_bot_api.reply_message(event.reply_token,message)
 
     if data == "Ham Burger":
         bubble = BubbleContainer(
@@ -311,6 +311,6 @@ def handle_postback(event):
             )
         )
 
-    message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
-    line_bot_api.reply_message(event.reply_token,message)
+        message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
+        line_bot_api.reply_message(event.reply_token,message)
 
