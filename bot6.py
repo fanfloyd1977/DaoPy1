@@ -32,7 +32,7 @@ client = gspread.authorize(creds)
 
 
 #Intent
-greeting = ["Hello Hello","Hi Hi", "Hi", "Hi, there", "Good day", "สวัสดีครับ", "สวัสดีค่ะ"]
+greeting = ["Hello Hello","Hi Hi", "Hi", "Hi, there", "Good day", "สวัสดีครับ", "สวัสดีค่ะ ยินดีต้อนรับค่ะ"]
 N = 1
 
 @app.route("/")
@@ -62,7 +62,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
-
+#Check Bill
     if event.message.text.lower() == "bill":
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
@@ -77,7 +77,9 @@ def handle_message(event):
 
 
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
-    #if event.message.text.lower() == "table number":
+    if event.message.text.lower() == "table number":
+        profile = line_bot_api.get_profile(event.source.user_id)
+        sheet = client.open("Booktwo").sheet1
 
 
 #Intent Menu
@@ -99,8 +101,8 @@ def handle_message(event):
                         image_url='https://images-gmi-pmc.edge-generalmills.com/e59f255c-7498-4b84-9c9d-e578bf5d88fc.jpg',
                         action=PostbackTemplateAction(
                             label='Taco',
-                            text='postback text1',
-                            data='action=buy&itemid=1'
+                            text='Taco',
+                            data='Taco'
                         )
                     ),
                     ImageCarouselColumn(
@@ -122,7 +124,7 @@ def handle_message(event):
 def handle_postback(event):
     data = event.postback.data
     if data == "Ham Regular":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="The order has been submitted"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Ham Regular : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
@@ -133,10 +135,11 @@ def handle_postback(event):
         sheet.update_cell(Num_row,4,250)
         sheet.update_cell(Num_row,5,1)
         sheet.update_cell(Num_row,6,profile.display_name)
+        sheet.update_cell(Num_row,7,"New")
         #sheet.update_cell(Num_row,7,profile.user_id)
         #sheet.update_cell(Num_row,8,profile.picture_url)
     if data == "Ham Large":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="The order has been submitted"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Ham Large : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
@@ -147,6 +150,35 @@ def handle_postback(event):
         sheet.update_cell(Num_row,4,450)
         sheet.update_cell(Num_row,5,1)
         sheet.update_cell(Num_row,6,profile.display_name)
+        sheet.update_cell(Num_row,7,"New")
+
+    if data == "Taco Regular":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Taco Regular : Submitted"))
+        profile = line_bot_api.get_profile(event.source.user_id)
+        sheet = client.open("Booktwo").sheet1
+        row = sheet.col_values(1)
+        Num_row = len(row)+1
+        sheet.update_cell(Num_row,1,len(row))
+        sheet.update_cell(Num_row,2,"Taco")
+        sheet.update_cell(Num_row,3,"Regular")
+        sheet.update_cell(Num_row,4,100)
+        sheet.update_cell(Num_row,5,1)
+        sheet.update_cell(Num_row,6,profile.display_name)
+        sheet.update_cell(Num_row,7,"New")
+
+    if data == "Taco Large":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Taco Large : Submitted"))
+        profile = line_bot_api.get_profile(event.source.user_id)
+        sheet = client.open("Booktwo").sheet1
+        row = sheet.col_values(1)
+        Num_row = len(row)+1
+        sheet.update_cell(Num_row,1,len(row))
+        sheet.update_cell(Num_row,2,"Taco")
+        sheet.update_cell(Num_row,3,"Large")
+        sheet.update_cell(Num_row,4,200)
+        sheet.update_cell(Num_row,5,1)
+        sheet.update_cell(Num_row,6,profile.display_name)
+        sheet.update_cell(Num_row,7,"New")
 
 
     #Flex message
@@ -163,7 +195,7 @@ def handle_postback(event):
             body=BoxComponent(
                 layout="vertical",
                 contents=[
-                    TextComponent(text="Brown Cafe",weight="bold",size="xl"),
+                    TextComponent(text="Ham Burger",weight="bold",size="xl"),
                     BoxComponent(
                         layout="baseline",margin="md",
                         contents=[
@@ -205,6 +237,71 @@ def handle_postback(event):
                         color= "#905c44",
                         height="sm",
                         action=PostbackAction(label="LARGE", data="Ham Large")
+                    )
+
+
+                ]
+            )
+        )
+
+    message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
+    line_bot_api.reply_message(event.reply_token,message)
+
+    if data == "Taco":
+        bubble = BubbleContainer(
+            direction='ltr',
+            hero=ImageComponent(
+                url="https://images-gmi-pmc.edge-generalmills.com/e59f255c-7498-4b84-9c9d-e578bf5d88fc.jpg",
+                size='full',
+                aspect_ratio='20:13',
+                aspect_mode='cover',
+                action=URIAction(uri='http://example.com', label='label')
+            ),
+            body=BoxComponent(
+                layout="vertical",
+                contents=[
+                    TextComponent(text="Taco",weight="bold",size="xl"),
+                    BoxComponent(
+                        layout="baseline",margin="md",
+                        contents=[
+
+                            IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
+                            TextComponent(text="100 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="450 kcl",size="sm",color="#976608",margin="md",align="end")
+
+                        ]
+                    ),
+                    BoxComponent(
+                        layout="baseline",margin="md",
+                        contents=[
+                            IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"),
+                            TextComponent(text="200 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="750 kcl",size="sm",color="#976608",margin="md",align="end")
+
+                        ]
+
+                    ),
+                    BoxComponent(
+                        layout="vertical",margin="md",
+                        contents=[TextComponent(text="Sauce, Onions, Pickles, lettuce & Cheese",size="xxs",color="#999999",margin="md"),]
+                    )
+                ]
+            ),
+            footer=BoxComponent(
+                layout="vertical",spacing="sm",
+                contents=[
+                    ButtonComponent(
+                        style="primary",
+                        color= "#DFD805",
+                        height="sm",
+                        action=PostbackAction(label="REGULAR", data="Taco Regular")
+                        # URIAction(label="ORDER",uri="tel:00000000")
+                    ),
+                    ButtonComponent(
+                        style="primary",
+                        color= "#DFD805",
+                        height="sm",
+                        action=PostbackAction(label="LARGE", data="Taco Large")
                     )
 
 
