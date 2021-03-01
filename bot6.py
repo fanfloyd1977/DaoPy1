@@ -62,7 +62,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
-    #Check Bill
+    #Main Check Bill
     if event.message.text.lower() == "bill":
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
@@ -77,12 +77,45 @@ def handle_message(event):
 
 
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
+
+    #Main Table number
     if event.message.text.lower() == "table number":
-        profile = line_bot_api.get_profile(event.source.user_id)
-        sheet = client.open("Booktwo").sheet1
+        T_message = TemplateSendMessage(
+            alt_text='ImageCarousel template',
+            template=ImageCarouselTemplate(
+                columns=[
+                    ImageCarouselColumn(
+                        image_url='https://www.seekpng.com/png/detail/62-622544_clipart-numbers-polka-dot-cute-number-1-clipart.png',
+                        action=PostbackTemplateAction(
+                        label='Table 1',
+                        text='Table 1',
+                        data='Table 1'
+                    )
+                ),
+                    ImageCarouselColumn(
+                        image_url='https://cdn2.vectorstock.com/i/1000x1000/98/76/hand-drawn-number-2-with-polka-dots-on-pastel-blue-vector-19159876.jpg',
+                        action=PostbackTemplateAction(
+                        label='Table 2',
+                        text='Table 2',
+                        data='Table 2'
+                    )
+                ),
+                    ImageCarouselColumn(
+                        image_url='https://cdn2.vectorstock.com/i/1000x1000/98/91/hand-drawn-number-3-with-polka-dots-on-pastel-blue-vector-19159891.jpg',
+                        action=PostbackTemplateAction(
+                        label='Table 3',
+                        text='Table 3',
+                        data='Table 3'
+                        )
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, T_message)
 
 
-    #Intent Menu
+
+    #Main Menu
 
     if event.message.text.lower() == "menu":
         B_message = TemplateSendMessage(
@@ -116,7 +149,7 @@ def handle_message(event):
                 ]
             )
         )
-    line_bot_api.reply_message(event.reply_token, B_message)
+        line_bot_api.reply_message(event.reply_token, B_message)
 
 
 
