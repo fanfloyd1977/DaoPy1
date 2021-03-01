@@ -133,7 +133,6 @@ def handle_message(event):
             columns=[
                 ImageCarouselColumn(
                     image_url='https://www.seekpng.com/png/detail/62-622544_clipart-numbers-polka-dot-cute-number-1-clipart.png',
-                    size = "md",
                     action=PostbackTemplateAction(
                         label='Table 1',
                         text='Table 1',
@@ -142,7 +141,6 @@ def handle_message(event):
                 ),
                 ImageCarouselColumn(
                     image_url='https://cdn2.vectorstock.com/i/1000x1000/98/76/hand-drawn-number-2-with-polka-dots-on-pastel-blue-vector-19159876.jpg',
-                    size = "md",
                     action=PostbackTemplateAction(
                         label='Table 2',
                         text='Table 2',
@@ -151,7 +149,6 @@ def handle_message(event):
                 ),
                 ImageCarouselColumn(
                     image_url='https://cdn2.vectorstock.com/i/1000x1000/98/91/hand-drawn-number-3-with-polka-dots-on-pastel-blue-vector-19159891.jpg',
-                    size = "md",
                     action=PostbackTemplateAction(
                         label='Table 3',
                         text='Table 3',
