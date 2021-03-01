@@ -71,23 +71,13 @@ def handle_message(event):
         row=len(num_row)
         for i in range(2,row+1):
             cus = sheet.row_values(i)
-            if cus[5] == profile.display_name:
+            if cus[5] == profile.display_name and cus[6] != "CHECKED":
                 sum = sum + int(cus[3])
+                sheet.update_cell(i,1,"CHECKED")
 
-        Bill_template = BubbleContainer(
-            direction='ltr',
-            hero=ImageComponent(
-                url="https://thumbs.dreamstime.com/b/open-bill-holder-check-presenter-restaurant-receipt-money-banknotes-coins-top-view-customer-s-payment-open-bill-142943120.jpg",
-                size='full',
-                aspect_ratio='20:13',
-                aspect_mode='cover',
-                action=URIAction(uri='http://example.com', label='label')
-            ))
-
-
-        Bill_message = FlexSendMessage(alt_text="Hello Bill", contents=Bill_template)
-        #line_bot_api.reply_message(event.reply_token, Bill_message)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
+    if event.message.text.lower() == "table number":
+
 
 #Intent Menu
 
@@ -125,40 +115,6 @@ def handle_message(event):
         )
     line_bot_api.reply_message(event.reply_token, B_message)
 
-#Intent Menu
-    if event.message.text.lower() == "table number":
-        T_message = TemplateSendMessage(
-        alt_text='ImageCarousel template',
-        template=ImageCarouselTemplate(
-            columns=[
-                ImageCarouselColumn(
-                    image_url='https://www.seekpng.com/png/detail/62-622544_clipart-numbers-polka-dot-cute-number-1-clipart.png',
-                    action=PostbackTemplateAction(
-                        label='Table 1',
-                        text='Table 1',
-                        data='Table 1'
-                    )
-                ),
-                ImageCarouselColumn(
-                    image_url='https://cdn2.vectorstock.com/i/1000x1000/98/76/hand-drawn-number-2-with-polka-dots-on-pastel-blue-vector-19159876.jpg',
-                    action=PostbackTemplateAction(
-                        label='Table 2',
-                        text='Table 2',
-                        data='Table 2'
-                    )
-                ),
-                ImageCarouselColumn(
-                    image_url='https://cdn2.vectorstock.com/i/1000x1000/98/91/hand-drawn-number-3-with-polka-dots-on-pastel-blue-vector-19159891.jpg',
-                    action=PostbackTemplateAction(
-                        label='Table 3',
-                        text='Table 3',
-                        data='Table 3'
-                    )
-                )
-            ]
-        )
-    )
-    line_bot_api.reply_message(event.reply_token, T_message)
 
 
 @handler.add(PostbackEvent)
