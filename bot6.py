@@ -55,14 +55,14 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 
-#Intent greeting
+    #Intent greeting
     if event.message.text.lower() in [low.lower() for low in greeting]:
         value = randrange(0, len(greeting))
         reply_text = greeting[value]
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_text))
-#Check Bill
+    #Check Bill
     if event.message.text.lower() == "bill":
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
@@ -82,7 +82,7 @@ def handle_message(event):
         sheet = client.open("Booktwo").sheet1
 
 
-#Intent Menu
+    #Intent Menu
 
     if event.message.text.lower() == "menu":
         B_message = TemplateSendMessage(
@@ -180,10 +180,38 @@ def handle_postback(event):
         sheet.update_cell(Num_row,6,profile.display_name)
         sheet.update_cell(Num_row,7,"New")
 
+    if data == "Hotdog Regular":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Hotdog Regular : Submitted"))
+        profile = line_bot_api.get_profile(event.source.user_id)
+        sheet = client.open("Booktwo").sheet1
+        row = sheet.col_values(1)
+        Num_row = len(row)+1
+        sheet.update_cell(Num_row,1,len(row))
+        sheet.update_cell(Num_row,2,"Hotdog")
+        sheet.update_cell(Num_row,3,"Regular")
+        sheet.update_cell(Num_row,4,150)
+        sheet.update_cell(Num_row,5,1)
+        sheet.update_cell(Num_row,6,profile.display_name)
+        sheet.update_cell(Num_row,7,"New")
+
+    if data == "Taco Large":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Hotdog Large : Submitted"))
+        profile = line_bot_api.get_profile(event.source.user_id)
+        sheet = client.open("Booktwo").sheet1
+        row = sheet.col_values(1)
+        Num_row = len(row)+1
+        sheet.update_cell(Num_row,1,len(row))
+        sheet.update_cell(Num_row,2,"Hotdog")
+        sheet.update_cell(Num_row,3,"Large")
+        sheet.update_cell(Num_row,4,200)
+        sheet.update_cell(Num_row,5,1)
+        sheet.update_cell(Num_row,6,profile.display_name)
+        sheet.update_cell(Num_row,7,"New")
+
 
     #Flex message
 
-
+#Taco
     if data == "Taco":
         T_bubble = BubbleContainer(
             direction='ltr',
@@ -248,7 +276,7 @@ def handle_postback(event):
 
         message = FlexSendMessage(alt_text="Hello T_bubble", contents=T_bubble)
         line_bot_api.reply_message(event.reply_token,message)
-
+#Ham Burger
     if data == "Ham Burger":
         bubble = BubbleContainer(
             direction='ltr',
@@ -313,4 +341,68 @@ def handle_postback(event):
 
         message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
         line_bot_api.reply_message(event.reply_token,message)
+#Hotdog
+    if data == "Hotdog":
+        D_bubble = BubbleContainer(
+            direction='ltr',
+            hero=ImageComponent(
+                url="https://media3.s-nbcnews.com/i/newscms/2020_27/1586837/hotdogs-te-main-200702_1e1ea98797356fd7f729a2b294d7bb26.jpg",
+                size='full',
+                aspect_ratio='20:13',
+                aspect_mode='cover',
+                action=URIAction(uri='http://example.com', label='label')
+            ),
+            body=BoxComponent(
+                layout="vertical",
+                contents=[
+                    TextComponent(text="Hotdog",weight="bold",size="xl"),
+                    BoxComponent(
+                        layout="baseline",margin="md",
+                        contents=[
 
+                            IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
+                            TextComponent(text="150 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="450 kcl",size="sm",color="#976608",margin="md",align="end")
+
+                        ]
+                    ),
+                    BoxComponent(
+                        layout="baseline",margin="md",
+                        contents=[
+                            IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"),
+                            TextComponent(text="200 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="750 kcl",size="sm",color="#976608",margin="md",align="end")
+
+                        ]
+
+                    ),
+                    BoxComponent(
+                        layout="vertical",margin="md",
+                        contents=[TextComponent(text="Sauce, Onions, Pickles, lettuce & Cheese",size="xxs",color="#999999",margin="md"),]
+                    )
+                ]
+            ),
+            footer=BoxComponent(
+                layout="vertical",spacing="sm",
+                contents=[
+                    ButtonComponent(
+                        style="primary",
+                        color= "#F98A76",
+                        height="sm",
+                        action=PostbackAction(label="REGULAR", data="Hotdog Regular")
+                        # URIAction(label="ORDER",uri="tel:00000000")
+                    ),
+                    ButtonComponent(
+                        style="primary",
+                        color= "#F98A76",
+                        height="sm",
+                        action=PostbackAction(label="LARGE", data="Hotdog Large")
+                    )
+
+
+                ]
+            )
+        )
+
+        message = FlexSendMessage(alt_text="Hello Flex", contents=D_bubble)
+        line_bot_api.reply_message(event.reply_token,message)
