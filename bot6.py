@@ -194,7 +194,7 @@ def handle_postback(event):
         sheet.update_cell(Num_row,6,profile.display_name)
         sheet.update_cell(Num_row,7,"New")
 
-    if data == "Taco Large":
+    if data == "Hotdog Large":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Hotdog Large : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
