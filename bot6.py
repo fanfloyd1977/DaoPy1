@@ -54,7 +54,8 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    #Intent greeting
+
+#Intent greeting
     if event.message.text.lower() in [low.lower() for low in greeting]:
         value = randrange(0, len(greeting))
         reply_text = greeting[value]
@@ -88,7 +89,7 @@ def handle_message(event):
         #line_bot_api.reply_message(event.reply_token, Bill_message)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
 
-    #Intent Menu
+#Intent Menu
 
     if event.message.text.lower() == "menu":
         B_message = TemplateSendMessage(
@@ -124,7 +125,43 @@ def handle_message(event):
         )
     line_bot_api.reply_message(event.reply_token, B_message)
 
-
+#Intent Menu
+    if event.message.text.lower() == "table":
+        T_message = TemplateSendMessage(
+        alt_text='ImageCarousel template',
+        template=ImageCarouselTemplate(
+            columns=[
+                ImageCarouselColumn(
+                    image_url='https://www.seekpng.com/png/detail/62-622544_clipart-numbers-polka-dot-cute-number-1-clipart.png',
+                    size = "md",
+                    action=PostbackTemplateAction(
+                        label='Table 1',
+                        text='Table 1',
+                        data='Table 1'
+                    )
+                ),
+                ImageCarouselColumn(
+                    image_url='https://cdn2.vectorstock.com/i/1000x1000/98/76/hand-drawn-number-2-with-polka-dots-on-pastel-blue-vector-19159876.jpg',
+                    size = "md",
+                    action=PostbackTemplateAction(
+                        label='Table 2',
+                        text='Table 2',
+                        data='Table 2'
+                    )
+                ),
+                ImageCarouselColumn(
+                    image_url='https://cdn2.vectorstock.com/i/1000x1000/98/91/hand-drawn-number-3-with-polka-dots-on-pastel-blue-vector-19159891.jpg',
+                    size = "md",
+                    action=PostbackTemplateAction(
+                        label='Table 3',
+                        text='Table 3',
+                        data='Table 3'
+                    )
+                )
+            ]
+        )
+    )
+    line_bot_api.reply_message(event.reply_token, T_message)
 
 
 @handler.add(PostbackEvent)
