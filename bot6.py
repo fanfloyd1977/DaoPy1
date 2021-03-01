@@ -246,7 +246,8 @@ def handle_postback(event):
 
     if data == "Table 1":
         profile = line_bot_api.get_profile(event.source.user_id)
-        sheet = client.open("Booktwo").sheet2
+        sheet_instance = client.open("Booktwo")
+        sheet = sheet_instance.get_worksheet(1)
         row = sheet.col_values(1)
         Num_row = len(row)+1
         sheet.update_cell(Num_row,1,len(row))
