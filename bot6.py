@@ -245,16 +245,15 @@ def handle_postback(event):
         sheet.update_cell(Num_row,7,"New")
 
     if data == "Table 1":
-        profile = line_bot_api.get_profile(event.source.user_id)
+        profileT = line_bot_api.get_profile(event.source.user_id)
         sheet_instance = client.open("Booktwo")
         sheet = sheet_instance.get_worksheet(1)
-        sheet.update_cell(2,1,"Table 1")
-        #row = sheet.col_values(1)
-        #Num_row = len(row)+1
-        #sheet.update_cell(Num_row,1,len(row))
-        #sheet.update_cell(Num_row,2,"Table 1")
-        #sheet.update_cell(Num_row,3,profile.user_id)
-        #sheet.update_cell(Num_row,4,profile.display_name)
+        row = sheet.col_values(1)
+        Num_row = len(row)+1
+        sheet.update_cell(Num_row,1,len(row))
+        sheet.update_cell(Num_row,2,"Table 1")
+        sheet.update_cell(Num_row,3,profileT.user_id)
+        sheet.update_cell(Num_row,4,profileT.display_name)
 
 
     #Flex message
