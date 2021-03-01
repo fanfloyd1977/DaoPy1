@@ -109,8 +109,8 @@ def handle_message(event):
                         image_url='https://media3.s-nbcnews.com/i/newscms/2020_27/1586837/hotdogs-te-main-200702_1e1ea98797356fd7f729a2b294d7bb26.jpg',
                         action=PostbackTemplateAction(
                             label='Hotdog',
-                            text='postback text2',
-                            data='action=buy&itemid=2'
+                            text='Hotdog',
+                            data='Hotdog'
                         )
                     )
                 ]
