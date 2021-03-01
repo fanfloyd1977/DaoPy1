@@ -249,3 +249,68 @@ def handle_postback(event):
     message = FlexSendMessage(alt_text="Hello T_bubble", contents=T_bubble)
     line_bot_api.reply_message(event.reply_token,message)
 
+    if data == "Ham Burger":
+        bubble = BubbleContainer(
+            direction='ltr',
+            hero=ImageComponent(
+                url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+                size='full',
+                aspect_ratio='20:13',
+                aspect_mode='cover',
+                action=URIAction(uri='http://example.com', label='label')
+            ),
+            body=BoxComponent(
+                layout="vertical",
+                contents=[
+                    TextComponent(text="Ham Burger",weight="bold",size="xl"),
+                    BoxComponent(
+                        layout="baseline",margin="md",
+                        contents=[
+
+                            IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
+                            TextComponent(text="250 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="450 kcl",size="sm",color="#976608",margin="md",align="end")
+
+                        ]
+                    ),
+                    BoxComponent(
+                        layout="baseline",margin="md",
+                        contents=[
+                            IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"),
+                            TextComponent(text="450 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="750 kcl",size="sm",color="#976608",margin="md",align="end")
+
+                        ]
+
+                    ),
+                    BoxComponent(
+                        layout="vertical",margin="md",
+                        contents=[TextComponent(text="Sauce, Onions, Pickles, lettuce & Cheese",size="xxs",color="#999999",margin="md"),]
+                    )
+                ]
+            ),
+            footer=BoxComponent(
+                layout="vertical",spacing="sm",
+                contents=[
+                    ButtonComponent(
+                        style="primary",
+                        color= "#905c44",
+                        height="sm",
+                        action=PostbackAction(label="REGULAR", data="Ham Regular")
+                        # URIAction(label="ORDER",uri="tel:00000000")
+                    ),
+                    ButtonComponent(
+                        style="primary",
+                        color= "#905c44",
+                        height="sm",
+                        action=PostbackAction(label="LARGE", data="Ham Large")
+                    )
+
+
+                ]
+            )
+        )
+
+    message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
+    line_bot_api.reply_message(event.reply_token,message)
+
