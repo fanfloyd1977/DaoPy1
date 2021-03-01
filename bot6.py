@@ -76,7 +76,7 @@ def handle_message(event):
                 sheet.update_cell(i,1,"CHECKED")
 
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
-    if event.message.text.lower() == "table number":
+    #if event.message.text.lower() == "table number":
 
 
 #Intent Menu
