@@ -72,8 +72,9 @@ def handle_message(event):
         for i in range(2,row+1):
             cus = sheet.row_values(i)
             if cus[5] == profile.display_name and cus[6] != "CHECKED":
+                sheet.update_cell(i,7,"CHECKED")
                 sum = sum + int(cus[3])
-                sheet.update_cell(i,6,"CHECKED")
+
 
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
     #if event.message.text.lower() == "table number":
