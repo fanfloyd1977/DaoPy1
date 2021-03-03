@@ -93,7 +93,7 @@ def handle_message(event):
             )
         )
         line_bot_api.reply_message(event.reply_token,Bill_message)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
+        #line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
 
 
     #Main Table number
