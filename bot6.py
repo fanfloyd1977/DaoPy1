@@ -75,8 +75,26 @@ def handle_message(event):
                 sheet.update_cell(i,7,"CHECKED")
                 sum = sum + int(cus[3])
 
+        Bill_message = BubbleContainer(
+            direction='ltr',
+            body=BoxComponent(
+                layout="vertical",
+                contents=[
+                    TextComponent(text="Bill",weight="bold",size="xl"),
+                    BoxComponent(
+                        layout="baseline",margin="md",contents=[
+                            IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
+                            TextComponent(text="Total bill = 100 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="###########",size="sm",color="#976608",margin="md",align="end")
+                        ]
+                    )
+                ]
 
+            )
+        )
+        line_bot_api.reply_message(event.reply_token,Bill_message)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
+
 
     #Main Table number
     if event.message.text.lower() == "table number":
