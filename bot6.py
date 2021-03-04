@@ -87,6 +87,8 @@ def handle_message(event):
             body=BoxComponent(
             layout="vertical",
             background_color= "#F9ED99",
+            image_url='https://www.seekpng.com/png/detail/62-622544_clipart-numbers-polka-dot-cute-number-1-clipart.png',
+
                 contents=[
                 TextComponent(text="RECEIPT",weight="bold",size="md"),
                 TextComponent(text="Cafe Camellia",weight="bold",size="lg"),
@@ -100,18 +102,18 @@ def handle_message(event):
             cus = sheet.row_values(i)
             if cus[7] == profile.user_id and cus[6] != "CHECKED":
                 row_data = sheet.row_values(i)
-                bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"                         "+ row_data[3])]
+                bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"              "+ row_data[3])]
                 line_bot_api.push_message(profile.user_id, bill_text)
                 sheet.update_cell(i,7,"CHECKED")
 
         Bill_bubble2 = BubbleContainer(
             direction='ltr',
             body=BoxComponent(
-                layout="vertical",
+                layout="baseline",margin="md",
                 background_color= "#F9ED99",
                 contents=[
-                    TextComponent(text="TOTAL : ",weight="bold",size="md"),
-                    TextComponent(text=str(sum),weight="bold",size="md",align="end")
+                    TextComponent(text="TOTAL : ",weight="bold",size="md",margin="md"),
+                    TextComponent(text=str(sum),weight="bold",size="md",margin="md",align="end")
 
                 ]))
         BB_message2 = FlexSendMessage(alt_text="Hello T_bubble", contents=Bill_bubble2)
