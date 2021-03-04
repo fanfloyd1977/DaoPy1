@@ -76,10 +76,10 @@ def handle_message(event):
                 row_data = sheet.row_values(i)
                 sheet.update_cell(i,7,"CHECKED")
                 sum = sum + int(cus[3])
-                bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"   "+ row_data[3])]
-                line_bot_api.push_message(profile.user_id, bill_text)
+                #bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"   "+ row_data[3])]
+                #line_bot_api.push_message(profile.user_id, bill_text)
 
-        line_bot_api.push_message(profile.user_id, TextSendMessage(text="TOTAL Bill = " + str(sum)))
+        #line_bot_api.push_message(profile.user_id, TextSendMessage(text="TOTAL Bill = " + str(sum)))
 
 
         Bill_bubble = BubbleContainer(
@@ -93,7 +93,7 @@ def handle_message(event):
                         contents=[
                             IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
                             TextComponent(text= str(sum) + "BHT",size="sm",color="#976608",margin="md"),
-                            TextComponent(text= sheet.cell(1,1).value),
+                            TextComponent(text= sheet.row_values(2)),
                             TextComponent(text="450 kcl",size="sm",color="#976608",margin="md",align="end")
                         ]
                     )
