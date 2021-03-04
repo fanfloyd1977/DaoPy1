@@ -82,28 +82,25 @@ def handle_message(event):
         #line_bot_api.push_message(profile.user_id, TextSendMessage(text="TOTAL Bill = " + str(sum)))
 
 
-        Bill_bubble = BubbleContainer(
+        Bill_bubble1 = BubbleContainer(
             direction='ltr',
             body=BoxComponent(
             layout="vertical",
                 contents=[
-                TextComponent(text="Total Bill",weight="bold",size="xl"),
-                    BoxComponent(
-                        layout="baseline",margin="md",
-                        contents=[
-                            IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
-                            TextComponent(text= str(sum) + "BHT",size="sm",color="#976608",margin="md"),
-                            TextComponent(text= sheet.row_values(2)),
-                            TextComponent(text="450 kcl",size="sm",color="#976608",margin="md",align="end")
-                        ]
-                    )
-                    ]
-            )
-        )
+                TextComponent(text="RECEIPT",weight="bold",size="md"),
+                TextComponent(text="Cafe Camellia",weight="bold",size="lg"),
+                TextComponent(text="Ladprao Street,3-9-2-8 Ladprao, Bangkok")
+            ]))
 
-        BB_message = FlexSendMessage(alt_text="Hello T_bubble", contents=Bill_bubble)
+        BB_message = FlexSendMessage(alt_text="Hello T_bubble", contents=Bill_bubble1)
         line_bot_api.push_message(profile.user_id,BB_message)
 
+        for i in range(2,row+1):
+            cus = sheet.row_values(i)
+            if cus[7] == profile.user_id and cus[6] == "CHECKED":
+                row_data = sheet.row_values(i)
+                bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"   "+ row_data[3])]
+                line_bot_api.push_message(profile.user_id, bill_text)
 
 
 
