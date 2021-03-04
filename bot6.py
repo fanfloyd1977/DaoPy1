@@ -86,7 +86,7 @@ def handle_message(event):
             direction='ltr',
             body=BoxComponent(
             layout="vertical",
-            background_color= "#F9ED99",
+            #background_color= "#F9ED99",
             image_url='https://www.seekpng.com/png/detail/62-622544_clipart-numbers-polka-dot-cute-number-1-clipart.png',
 
                 contents=[
@@ -109,7 +109,7 @@ def handle_message(event):
         Bill_bubble2 = BubbleContainer(
             direction='ltr',
             body=BoxComponent(
-                layout="baseline",margin="md",
+                layout="baseline",margin="sm",
                 background_color= "#F9ED99",
                 contents=[
                     TextComponent(text="TOTAL : ",weight="bold",size="md",margin="md"),
