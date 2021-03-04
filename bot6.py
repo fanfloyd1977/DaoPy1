@@ -101,7 +101,7 @@ def handle_message(event):
             cus = sheet.row_values(i)
             if cus[7] == profile.user_id and cus[6] != "CHECKED":
                 row_data = sheet.row_values(i)
-                bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"              "+ row_data[3])]
+                bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"              "+ row_data[3]+ "  BHT")]
                 line_bot_api.push_message(profile.user_id, bill_text)
                 sheet.update_cell(i,7,"CHECKED")
 
@@ -112,7 +112,7 @@ def handle_message(event):
                 background_color= "#F9ED99",
                 contents=[
                     TextComponent(text="TOTAL : ",weight="bold",size="md",margin="sm"),
-                    TextComponent(text=str(sum),weight="bold",size="md",margin="sm",align="end")
+                    TextComponent(text=str(sum) + " BHT",weight="bold",size="md",margin="sm",align="end")
 
                 ]))
         BB_message2 = FlexSendMessage(alt_text="Hello T_bubble", contents=Bill_bubble2)
