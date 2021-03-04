@@ -72,7 +72,7 @@ def handle_message(event):
         row=len(num_row)
         for i in range(2,row+1):
             cus = sheet.row_values(i)
-            if cus[5] == profile.display_name and cus[6] != "CHECKED":
+            if cus[7] == profile.user_id and cus[6] != "CHECKED":
                 row_data = sheet.row_values(i)
                 sheet.update_cell(i,7,"CHECKED")
                 sum = sum + int(cus[3])
@@ -176,7 +176,7 @@ def handle_postback(event):
         sheet.update_cell(Num_row,5,1)
         sheet.update_cell(Num_row,6,profile.display_name)
         sheet.update_cell(Num_row,7,"New")
-        #sheet.update_cell(Num_row,7,profile.user_id)
+        sheet.update_cell(Num_row,8,profile.user_id)
         #sheet.update_cell(Num_row,8,profile.picture_url)
     if data == "Ham Large":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Ham Large : Submitted"))
@@ -191,6 +191,7 @@ def handle_postback(event):
         sheet.update_cell(Num_row,5,1)
         sheet.update_cell(Num_row,6,profile.display_name)
         sheet.update_cell(Num_row,7,"New")
+        sheet.update_cell(Num_row,8,profile.user_id)
 
     if data == "Taco Regular":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Taco Regular : Submitted"))
@@ -205,6 +206,7 @@ def handle_postback(event):
         sheet.update_cell(Num_row,5,1)
         sheet.update_cell(Num_row,6,profile.display_name)
         sheet.update_cell(Num_row,7,"New")
+        sheet.update_cell(Num_row,8,profile.user_id)
 
     if data == "Taco Large":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Taco Large : Submitted"))
@@ -219,6 +221,7 @@ def handle_postback(event):
         sheet.update_cell(Num_row,5,1)
         sheet.update_cell(Num_row,6,profile.display_name)
         sheet.update_cell(Num_row,7,"New")
+        sheet.update_cell(Num_row,8,profile.user_id)
 
     if data == "Hotdog Regular":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Hotdog Regular : Submitted"))
@@ -233,6 +236,7 @@ def handle_postback(event):
         sheet.update_cell(Num_row,5,1)
         sheet.update_cell(Num_row,6,profile.display_name)
         sheet.update_cell(Num_row,7,"New")
+        sheet.update_cell(Num_row,8,profile.user_id)
 
     if data == "Hotdog Large":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Hotdog Large : Submitted"))
@@ -247,6 +251,7 @@ def handle_postback(event):
         sheet.update_cell(Num_row,5,1)
         sheet.update_cell(Num_row,6,profile.display_name)
         sheet.update_cell(Num_row,7,"New")
+        sheet.update_cell(Num_row,8,profile.user_id)
 
     if data == "Table 1":
         profileT = line_bot_api.get_profile(event.source.user_id)
