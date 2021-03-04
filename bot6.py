@@ -81,23 +81,19 @@ def handle_message(event):
 
         line_bot_api.push_message(profile.user_id, TextSendMessage(text="TOTAL Bill = " + str(sum)))
 
-        Bill_message = BubbleContainer(
-            direction='ltr',
-            body=BoxComponent(
-                layout="vertical",
-                contents=[
-                    TextComponent(text="Bill",weight="bold",size="xl"),
-                    BoxComponent(
-                        layout="baseline",margin="md",contents=[
-                            IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
-                            TextComponent(text="Total bill = 100 BHT",size="sm",color="#976608",margin="md"),
-                            TextComponent(text="###########",size="sm",color="#976608",margin="md",align="end")
-                        ]
-                    )
-                ]
-
-            )
-        )
+        Bill_message = TemplateSendMessage(
+            alt_text='ImageCarousel template',
+            template=ImageCarouselTemplate(
+                columns=[
+                    ImageCarouselColumn(
+                        image_url='https://www.seekpng.com/png/detail/62-622544_clipart-numbers-polka-dot-cute-number-1-clipart.png',
+                        size = "sm",
+                        action=PostbackTemplateAction(
+                            label=str(sum),
+                            text=str(sum),
+                            data='Total'
+                        )
+                    )]))
         line_bot_api.push_message(profile.user_id,Bill_message)
 
 
