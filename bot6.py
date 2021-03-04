@@ -101,7 +101,7 @@ def handle_message(event):
         )
 
         BB_message = FlexSendMessage(alt_text="Hello T_bubble", contents=Bill_bubble)
-        line_bot_api.push_message(event.reply_token,BB_message)
+        line_bot_api.push_message(profile.user_id,BB_message)
 
 
 
