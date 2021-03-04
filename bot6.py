@@ -74,7 +74,7 @@ def handle_message(event):
             cus = sheet.row_values(i)
             if cus[7] == profile.user_id and cus[6] != "CHECKED":
                 row_data = sheet.row_values(i)
-                sheet.update_cell(i,7,"CHECKED")
+                #sheet.update_cell(i,7,"CHECKED")
                 sum = sum + int(cus[3])
                 #bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"   "+ row_data[3])]
                 #line_bot_api.push_message(profile.user_id, bill_text)
@@ -89,7 +89,7 @@ def handle_message(event):
                 contents=[
                 TextComponent(text="RECEIPT",weight="bold",size="md"),
                 TextComponent(text="Cafe Camellia",weight="bold",size="lg"),
-                TextComponent(text="Ladprao Street,3-9-2-8 Ladprao, Bangkok")
+                TextComponent(text="Ladprao Street,3-9-2-8 Ladprao, Bangkok",weight="bold",size="sm")
             ]))
 
         BB_message = FlexSendMessage(alt_text="Hello T_bubble", contents=Bill_bubble1)
@@ -97,15 +97,11 @@ def handle_message(event):
 
         for i in range(2,row+1):
             cus = sheet.row_values(i)
-            if cus[7] == profile.user_id and cus[6] == "CHECKED":
+            if cus[7] == profile.user_id and cus[6] != "CHECKED":
                 row_data = sheet.row_values(i)
-                bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"   "+ row_data[3])]
+                bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"                 "+ row_data[3])]
                 line_bot_api.push_message(profile.user_id, bill_text)
-
-
-
-
-
+                sheet.update_cell(i,7,"CHECKED")
 
 
 #Main Table number
