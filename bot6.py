@@ -86,8 +86,7 @@ def handle_message(event):
             direction='ltr',
             body=BoxComponent(
             layout="vertical",
-            #background_color= "#F9ED99",
-            image_url='https://www.seekpng.com/png/detail/62-622544_clipart-numbers-polka-dot-cute-number-1-clipart.png',
+            background_color= "#F9ED99",
 
                 contents=[
                 TextComponent(text="RECEIPT",weight="bold",size="md"),
@@ -109,11 +108,11 @@ def handle_message(event):
         Bill_bubble2 = BubbleContainer(
             direction='ltr',
             body=BoxComponent(
-                layout="baseline",margin="sm",
+                layout="baseline",
                 background_color= "#F9ED99",
                 contents=[
-                    TextComponent(text="TOTAL : ",weight="bold",size="md",margin="md"),
-                    TextComponent(text=str(sum),weight="bold",size="md",margin="md",align="end")
+                    TextComponent(text="TOTAL : ",weight="bold",size="md",margin="sm"),
+                    TextComponent(text=str(sum),weight="bold",size="md",margin="sm",align="end")
 
                 ]))
         BB_message2 = FlexSendMessage(alt_text="Hello T_bubble", contents=Bill_bubble2)
