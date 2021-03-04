@@ -75,7 +75,7 @@ def handle_message(event):
             if cus[5] == profile.display_name and cus[6] != "CHECKED":
                 row_data = sheet.row_values(i)
                 bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"   "+ row_data[3])]
-                line_bot_api.push_message(event.source.user_id, bill_text)
+                line_bot_api.push_message(profile.user_id, bill_text)
                 # ),TextSendMessage(text=row_data[2]),TextSendMessage(text=row_data[3]),TextSendMessage(text=row_data[4])]
                 #line_bot_api.relpy_message(event.reply_token, bill_text)
                 #line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
