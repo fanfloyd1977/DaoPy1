@@ -76,7 +76,7 @@ def handle_message(event):
                 sum = sum + int(cus[3])
 
 
-        bill_text = [TextSendMessage(text="Hi Bill"),TextSendMessage(text="Hi Dao")]
+        bill_text = [TextSendMessage(text="Hi Bill"),TextSendMessage(text="Hi Dao"),TextSendMessage(text="Hi Duan")]
         line_bot_api.reply_message(event.reply_token, bill_text)
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
 
