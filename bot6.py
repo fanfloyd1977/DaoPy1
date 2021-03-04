@@ -65,7 +65,8 @@ def handle_message(event):
     #Main Check Bill
     if event.message.text.lower() == "bill":
         profile = line_bot_api.get_profile(event.source.user_id)
-        sheet = client.open("Booktwo").sheet1
+        sheet_instance = client.open("Booktwo")
+        sheet = sheet_instance.get_worksheet(0)
         sum = 0
         num_row = sheet.col_values(1)
         row=len(num_row)
@@ -75,8 +76,9 @@ def handle_message(event):
                 sheet.update_cell(i,7,"CHECKED")
                 sum = sum + int(cus[3])
 
+        row_data = sheet.row_values(2)
 
-        bill_text = [TextSendMessage(text="Hi Bill"),TextSendMessage(text="Hi Dao"),TextSendMessage(text="Hi Duan")]
+        bill_text = [TextSendMessage(text=row_data[1]),TextSendMessage(text=row_data[2]),TextSendMessage(text=row_data[3]),TextSendMessage(text=row_data[4])]
         line_bot_api.reply_message(event.reply_token, bill_text)
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
 
