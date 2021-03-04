@@ -81,18 +81,19 @@ def handle_message(event):
 
         line_bot_api.push_message(profile.user_id, TextSendMessage(text="TOTAL Bill = " + str(sum)))
 
+
         Bill_bubble = BubbleContainer(
             direction='ltr',
             body=BoxComponent(
             layout="vertical",
                 contents=[
-                TextComponent(text="Taco",weight="bold",size="xl"),
+                TextComponent(text="Total Bill",weight="bold",size="xl"),
                     BoxComponent(
                         layout="baseline",margin="md",
                         contents=[
-
                             IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
-                            TextComponent(text="100 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text= str(sum) + "BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text= sheet.cell(1,1).value),
                             TextComponent(text="450 kcl",size="sm",color="#976608",margin="md",align="end")
                         ]
                     )
