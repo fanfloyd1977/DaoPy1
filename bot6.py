@@ -86,22 +86,36 @@ def handle_message(event):
             direction='ltr',
             body=BoxComponent(
             layout="vertical",
+            background_color= "#F9ED99",
                 contents=[
                 TextComponent(text="RECEIPT",weight="bold",size="md"),
                 TextComponent(text="Cafe Camellia",weight="bold",size="lg"),
-                TextComponent(text="Ladprao Street,3-9-2-8 Ladprao, Bangkok",weight="bold",size="sm")
+                TextComponent(text="Ladprao Street,3-9-2-8 Ladprao, Bangkok",weight="bold",size="xxs")
             ]))
 
-        BB_message = FlexSendMessage(alt_text="Hello T_bubble", contents=Bill_bubble1)
-        line_bot_api.push_message(profile.user_id,BB_message)
+        BB_message1 = FlexSendMessage(alt_text="Hello T_bubble", contents=Bill_bubble1)
+        line_bot_api.push_message(profile.user_id,BB_message1)
 
         for i in range(2,row+1):
             cus = sheet.row_values(i)
             if cus[7] == profile.user_id and cus[6] != "CHECKED":
                 row_data = sheet.row_values(i)
-                bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"                 "+ row_data[3])]
+                bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"                         "+ row_data[3])]
                 line_bot_api.push_message(profile.user_id, bill_text)
                 sheet.update_cell(i,7,"CHECKED")
+
+        Bill_bubble2 = BubbleContainer(
+            direction='ltr',
+            body=BoxComponent(
+                layout="vertical",
+                background_color= "#F9ED99",
+                contents=[
+                    TextComponent(text="TOTAL : ",weight="bold",size="md"),
+                    TextComponent(text=str(sum),weight="bold",size="md",align="end")
+
+                ]))
+        BB_message2 = FlexSendMessage(alt_text="Hello T_bubble", contents=Bill_bubble2)
+        line_bot_api.push_message(profile.user_id,BB_message2)
 
 
 #Main Table number
