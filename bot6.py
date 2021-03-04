@@ -79,13 +79,10 @@ def handle_message(event):
 
 
         row_data = sheet.row_values(2)
-        bill_text = [TextSendMessage(text=row_data[1]),TextSendMessage(text=row_data[2]),TextSendMessage(text=row_data[3]),TextSendMessage(text=row_data[4])]
+        bill_text = [TextSendMessage(text=row_data[1] + row_data[2])]
+         # ),TextSendMessage(text=row_data[2]),TextSendMessage(text=row_data[3]),TextSendMessage(text=row_data[4])]
         line_bot_api.reply_message(event.reply_token, bill_text)
-
-        row_data = sheet.row_values(3)
-        bill_text2 = [TextSendMessage(text=row_data[1]),TextSendMessage(text=row_data[2]),TextSendMessage(text=row_data[3]),TextSendMessage(text=row_data[4])]
-        line_bot_api.push_message(event.reply_token, bill_text2)
-            #line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
+        #line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Tota Bill = " + str(sum)))
 
 
     #Main Table number
