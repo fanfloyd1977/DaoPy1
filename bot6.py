@@ -86,7 +86,7 @@ def handle_message(event):
         BB_message1 = FlexSendMessage(alt_text="Hello T_bubble", contents=Bill_bubble1)
         line_bot_api.push_message(profile.user_id,BB_message1)
 ## Bill Body
-        for j in range(1,row+1):
+        for j in range(2,row+1):
             cus = sheet.row_values(j)
             if cus[7] == profile.user_id and cus[6] != "CHECKED":
                 sheet.update_cell(j,7,"CHECKED")
