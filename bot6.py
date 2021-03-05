@@ -70,12 +70,12 @@ def handle_message(event):
         sum = 0
         num_row = sheet.col_values(1)
         row=len(num_row)
-        #for i in range(2,row+1):
-            #cus = sheet.row_values(i)
-            #if cus[7] == profile.user_id and cus[6] != "CHECKED":
-                #row_data = sheet.row_values(i)
-                #sheet.update_cell(i,7,"CHECKED")
-                #sum = sum + int(cus[3])
+        for i in range(2,row+1):
+            cus = sheet.row_values(i)
+            if cus[7] == profile.user_id and cus[6] != "CHECKED":
+                row_data = sheet.row_values(i)
+                sheet.update_cell(i,7,"CHECKED")
+                sum = sum + int(cus[3])
                 #bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"   "+ row_data[3])]
                 #line_bot_api.push_message(profile.user_id, bill_text)
 
@@ -101,8 +101,8 @@ def handle_message(event):
             cus = sheet.row_values(i)
             if cus[7] == profile.user_id and cus[6] != "CHECKED":
                 row_data = sheet.row_values(i)
-                sheet.update_cell(i,7,"CHECKED")
-                sum = sum + int(cus[3])
+                #sheet.update_cell(i,7,"CHECKED")
+                #sum = sum + int(cus[3])
                 bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"         "+ row_data[3]+ " BHT")]
                 line_bot_api.push_message(profile.user_id, bill_text)
 
