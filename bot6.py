@@ -94,6 +94,7 @@ def handle_message(event):
                 bill_text = [TextSendMessage(text=cus[1] +"   "+ cus[2] +"         "+ cus[3]+ " BHT")]
                 line_bot_api.push_message(profile.user_id, bill_text)
                 sheet1.append_row(sheet.row_values(j))
+                sheet.delete_row(j)
 ## Bill Footer
 
         Bill_bubble2 = BubbleContainer(
