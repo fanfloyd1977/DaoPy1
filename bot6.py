@@ -101,10 +101,10 @@ def handle_message(event):
             cus = sheet.row_values(i)
             if cus[7] == profile.user_id and cus[6] != "CHECKED":
                 row_data = sheet.row_values(i)
-                bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"              "+ row_data[3]+ "  BHT")]
-                line_bot_api.push_message(profile.user_id, bill_text)
-                sum = sum + int(cus[3])
                 sheet.update_cell(i,7,"CHECKED")
+                sum = sum + int(cus[3])
+                bill_text = [TextSendMessage(text=row_data[1] +"   "+ row_data[2] +"         "+ row_data[3]+ " BHT")]
+                line_bot_api.push_message(profile.user_id, bill_text)
 
 
         Bill_bubble2 = BubbleContainer(
