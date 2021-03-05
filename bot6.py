@@ -204,8 +204,9 @@ def handle_postback(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Num_row = len(row)
-        sheet.append_row(Num_row,"Hamburger","Regular",250,1,profile.display_name,"New",profile.user_id)
+        #Num_row = len(row)
+        Ham_Reg_Row = [len(row),"Hamburger","Regular",250,1,profile.display_name,"New",profile.user_id]
+        sheet.append_row(Ham_Reg_Row)
         #sheet.update_cell(Num_row,1,len(row))
         #sheet.update_cell(Num_row,2,"Hamburger")
         #sheet.update_cell(Num_row,3,"Regular")
