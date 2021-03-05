@@ -107,6 +107,16 @@ def handle_message(event):
         BB_message2 = FlexSendMessage(alt_text="Hello T_bubble", contents=Bill_bubble2)
         line_bot_api.push_message(profile.user_id,BB_message2)
 
+## Clear table
+        for k in range(2,row+1):
+            cus = sheet.row_values(k)
+            if cus[6] == "CHECKED":
+                sheet_instance = client.open("Booktwo")
+                sheet1 = sheet_instance.get_worksheet(1)
+                sheet1.row_values(2) == sheet.row_values(k)
+
+
+
 
 #Main Table number
     if event.message.text.lower() == "table number":
@@ -194,15 +204,16 @@ def handle_postback(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Num_row = len(row)+1
-        sheet.update_cell(Num_row,1,len(row))
-        sheet.update_cell(Num_row,2,"Hamburger")
-        sheet.update_cell(Num_row,3,"Regular")
-        sheet.update_cell(Num_row,4,250)
-        sheet.update_cell(Num_row,5,1)
-        sheet.update_cell(Num_row,6,profile.display_name)
-        sheet.update_cell(Num_row,7,"New")
-        sheet.update_cell(Num_row,8,profile.user_id)
+        Num_row = len(row)
+        sheet.append_row(Num_row,"Hamburger","Regular",250,1,profile.display_name,"New",profile.user_id)
+        #sheet.update_cell(Num_row,1,len(row))
+        #sheet.update_cell(Num_row,2,"Hamburger")
+        #sheet.update_cell(Num_row,3,"Regular")
+        #sheet.update_cell(Num_row,4,250)
+        #sheet.update_cell(Num_row,5,1)
+        #sheet.update_cell(Num_row,6,profile.display_name)
+        #sheet.update_cell(Num_row,7,"New")
+        #sheet.update_cell(Num_row,8,profile.user_id)
         #sheet.update_cell(Num_row,8,profile.picture_url)
     if data == "Ham Large":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Ham Large : Submitted"))
