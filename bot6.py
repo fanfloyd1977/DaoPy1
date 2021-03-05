@@ -95,6 +95,7 @@ def handle_message(event):
                 line_bot_api.push_message(profile.user_id, bill_text)
                 sheet1.append_row(sheet.row_values(j))
                 sheet.delete_row(j)
+                row=len(num_row)
 ## Bill Footer
 
         Bill_bubble2 = BubbleContainer(
