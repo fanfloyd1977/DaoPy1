@@ -67,6 +67,7 @@ def handle_message(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet_instance = client.open("Booktwo")
         sheet = sheet_instance.get_worksheet(0)
+        sheet1 = sheet_instance.get_worksheet(1)
         sum = 0
         num_row = sheet.col_values(1)
         row=len(num_row)
@@ -92,6 +93,7 @@ def handle_message(event):
                 sum = sum + int(cus[3])
                 bill_text = [TextSendMessage(text=cus[1] +"   "+ cus[2] +"         "+ cus[3]+ " BHT")]
                 line_bot_api.push_message(profile.user_id, bill_text)
+                sheet1.append_row(cus)
 ## Bill Footer
 
         Bill_bubble2 = BubbleContainer(
@@ -106,16 +108,6 @@ def handle_message(event):
                 ]))
         BB_message2 = FlexSendMessage(alt_text="Hello T_bubble", contents=Bill_bubble2)
         line_bot_api.push_message(profile.user_id,BB_message2)
-
-## Clear table
-        for k in range(2,row+1):
-            cus = sheet.row_values(k)
-            if cus[6] == "CHECKED":
-                sheet_instance = client.open("Booktwo")
-                sheet1 = sheet_instance.get_worksheet(1)
-                sheet1.row_values(2) == sheet.row_values(k)
-
-
 
 
 #Main Table number
