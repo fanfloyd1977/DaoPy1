@@ -93,7 +93,7 @@ def handle_message(event):
                 sum = sum + int(cus[3])
                 bill_text = [TextSendMessage(text=cus[1] +"   "+ cus[2] +"         "+ cus[3]+ " BHT")]
                 line_bot_api.push_message(profile.user_id, bill_text)
-                sheet1.append_row(cus)
+                sheet1.append_row(sheet.row_values(j))
 ## Bill Footer
 
         Bill_bubble2 = BubbleContainer(
