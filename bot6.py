@@ -204,92 +204,50 @@ def handle_postback(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        #Num_row = len(row)
-        Ham_Reg_Row = [len(row),"Hamburger","Regular",250,1,profile.display_name,"New",profile.user_id]
-        sheet.append_row(Ham_Reg_Row)
-        #sheet.update_cell(Num_row,1,len(row))
-        #sheet.update_cell(Num_row,2,"Hamburger")
-        #sheet.update_cell(Num_row,3,"Regular")
-        #sheet.update_cell(Num_row,4,250)
-        #sheet.update_cell(Num_row,5,1)
-        #sheet.update_cell(Num_row,6,profile.display_name)
-        #sheet.update_cell(Num_row,7,"New")
-        #sheet.update_cell(Num_row,8,profile.user_id)
-        #sheet.update_cell(Num_row,8,profile.picture_url)
+        Ham_Regular_Row = [len(row),"Hamburger","Regular",250,1,profile.display_name,"New",profile.user_id]
+        sheet.append_row(Ham_Regular_Row)
+
     if data == "Ham Large":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Ham Large : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Num_row = len(row)+1
-        sheet.update_cell(Num_row,1,len(row))
-        sheet.update_cell(Num_row,2,"Hamburger")
-        sheet.update_cell(Num_row,3,"Large")
-        sheet.update_cell(Num_row,4,450)
-        sheet.update_cell(Num_row,5,1)
-        sheet.update_cell(Num_row,6,profile.display_name)
-        sheet.update_cell(Num_row,7,"New")
-        sheet.update_cell(Num_row,8,profile.user_id)
+        Ham_Large_Row = [len(row),"Hamburger","Large",450,1,profile.display_name,"New",profile.user_id]
+        sheet.append_row(Ham_Large_Row)
+
 
     if data == "Taco Regular":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Taco Regular : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Num_row = len(row)+1
-        sheet.update_cell(Num_row,1,len(row))
-        sheet.update_cell(Num_row,2,"Taco")
-        sheet.update_cell(Num_row,3,"Regular")
-        sheet.update_cell(Num_row,4,100)
-        sheet.update_cell(Num_row,5,1)
-        sheet.update_cell(Num_row,6,profile.display_name)
-        sheet.update_cell(Num_row,7,"New")
-        sheet.update_cell(Num_row,8,profile.user_id)
+        Taco_Regular_Row = [len(row),"Taco","Regular",100,1,profile.display_name,"New",profile.user_id]
+        sheet.append_row(Taco_Regular_Row)
 
     if data == "Taco Large":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Taco Large : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Num_row = len(row)+1
-        sheet.update_cell(Num_row,1,len(row))
-        sheet.update_cell(Num_row,2,"Taco")
-        sheet.update_cell(Num_row,3,"Large")
-        sheet.update_cell(Num_row,4,200)
-        sheet.update_cell(Num_row,5,1)
-        sheet.update_cell(Num_row,6,profile.display_name)
-        sheet.update_cell(Num_row,7,"New")
-        sheet.update_cell(Num_row,8,profile.user_id)
+        Taco_Large_Row = [len(row),"Taco","Large",200,1,profile.display_name,"New",profile.user_id]
+        sheet.append_row(Taco_Large_Row)
 
     if data == "Hotdog Regular":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Hotdog Regular : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Num_row = len(row)+1
-        sheet.update_cell(Num_row,1,len(row))
-        sheet.update_cell(Num_row,2,"Hotdog")
-        sheet.update_cell(Num_row,3,"Regular")
-        sheet.update_cell(Num_row,4,150)
-        sheet.update_cell(Num_row,5,1)
-        sheet.update_cell(Num_row,6,profile.display_name)
-        sheet.update_cell(Num_row,7,"New")
-        sheet.update_cell(Num_row,8,profile.user_id)
+        Hot_Regular_Row = [len(row),"Hotdog","Regular",150,1,profile.display_name,"New",profile.user_id]
+        sheet.append_row(Hot_Regular_Row)
 
     if data == "Hotdog Large":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Hotdog Large : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Num_row = len(row)+1
-        sheet.update_cell(Num_row,1,len(row))
-        sheet.update_cell(Num_row,2,"Hotdog")
-        sheet.update_cell(Num_row,3,"Large")
-        sheet.update_cell(Num_row,4,200)
-        sheet.update_cell(Num_row,5,1)
-        sheet.update_cell(Num_row,6,profile.display_name)
-        sheet.update_cell(Num_row,7,"New")
-        sheet.update_cell(Num_row,8,profile.user_id)
+        Hot_Large_Row = [len(row),"Hotdog","Large",200,1,profile.display_name,"New",profile.user_id]
+        sheet.append_row(Hot_Large_Row)
+
 
     if data == "Table 1":
         profileT = line_bot_api.get_profile(event.source.user_id)
