@@ -11,6 +11,11 @@ def hello():
     return "Hello My first smart pop-up"
 
 
+if __name__ == "__main__":
+
+    app.run()
+
+
 
 
 
