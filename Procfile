@@ -1,1 +1,1 @@
-web: http-server
+web: gunicorn bot2:app
