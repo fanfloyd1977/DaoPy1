@@ -162,9 +162,9 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url='https://cdn.shopify.com/s/files/1/0463/7432/2326/products/gris_dior_1850x2000_e202a24d-57ef-413d-88bf-d816730e3c9e.jpg',
                         action=PostbackTemplateAction(
-                            label='Ham Burger',
-                            text='Ham Burger',
-                            data='Ham Burger'
+                            label='Gris',
+                            text='Gris',
+                            data='Gris'
                         )
                     ),
                     ImageCarouselColumn(
@@ -193,21 +193,21 @@ def handle_message(event):
 @handler.add(PostbackEvent)
 def handle_postback(event):
     data = event.postback.data
-    if data == "Ham Regular":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Ham Regular : Submitted"))
+    if data == "Gris Regular":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Gris regular : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Ham_Regular_Row = [len(row),"Hamburger","Regular",250,1,profile.display_name,"New",profile.user_id]
-        sheet.append_row(Ham_Regular_Row)
+        Gris_Regular_Row = [len(row),"Gris","Regular",250,1,profile.display_name,"New",profile.user_id]
+        sheet.append_row(Gris_Regular_Row)
 
-    if data == "Ham Large":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Ham Large : Submitted"))
+    if data == "Gris Large":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Gris Large : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Ham_Large_Row = [len(row),"Hamburger","Large",450,1,profile.display_name,"New",profile.user_id]
-        sheet.append_row(Ham_Large_Row)
+        Gris_Large_Row = [len(row),"Gris","Large",450,1,profile.display_name,"New",profile.user_id]
+        sheet.append_row(Gris_Large_Row)
 
 
     if data == "Taco Regular":
@@ -322,12 +322,12 @@ def handle_postback(event):
 
         message = FlexSendMessage(alt_text="Hello T_bubble", contents=T_bubble)
         line_bot_api.reply_message(event.reply_token,message)
-#Ham Burger
-    if data == "Ham Burger":
+#Gris
+    if data == "Gris":
         bubble = BubbleContainer(
             direction='ltr',
             hero=ImageComponent(
-                url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+                url="https://cdn.shopify.com/s/files/1/0463/7432/2326/products/gris_dior_1850x2000_e202a24d-57ef-413d-88bf-d816730e3c9e.jpg",
                 size='full',
                 aspect_ratio='20:13',
                 aspect_mode='cover',
@@ -336,7 +336,7 @@ def handle_postback(event):
             body=BoxComponent(
                 layout="vertical",
                 contents=[
-                    TextComponent(text="Ham Burger",weight="bold",size="xl"),
+                    TextComponent(text="Gris Dior",weight="bold",size="xl"),
                     BoxComponent(
                         layout="baseline",margin="md",
                         contents=[
@@ -359,7 +359,7 @@ def handle_postback(event):
                     ),
                     BoxComponent(
                         layout="vertical",margin="md",
-                        contents=[TextComponent(text="Sauce, Onions, Pickles, lettuce & Cheese",size="xxs",color="#999999",margin="md"),]
+                        contents=[TextComponent(text="Bergamot, Turkish rose, Patchouli, Jasmine sambac & Amber",size="xxs",color="#999999",margin="md"),]
                     )
                 ]
             ),
@@ -370,14 +370,14 @@ def handle_postback(event):
                         style="primary",
                         color= "#905c44",
                         height="sm",
-                        action=PostbackAction(label="REGULAR", data="Ham Regular")
+                        action=PostbackAction(label="REGULAR", data="Gris Regular")
                         # URIAction(label="ORDER",uri="tel:00000000")
                     ),
                     ButtonComponent(
                         style="primary",
                         color= "#905c44",
                         height="sm",
-                        action=PostbackAction(label="LARGE", data="Ham Large")
+                        action=PostbackAction(label="LARGE", data="Gris Large")
                     )
 
 
