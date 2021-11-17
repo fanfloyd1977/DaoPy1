@@ -32,7 +32,7 @@ client = gspread.authorize(creds)
 
 
 #Intent
-greeting = ["Hello Hello","Hi Hi", "Hi", "Hi, there", "Good day", "สวัสดีครับ", "สวัสดีค่ะ ยินดีต้อนรับค่ะ"]
+greeting = ["Hello Hello","Hi Hi", "Hi", "Hi, there", "Good day", "สวัสดีครับ", "สวัสดีค่ะ ยินดีต้อนรับค่ะ", "สวัสดีค่ะ"]
 N = 1
 
 @app.route("/")
