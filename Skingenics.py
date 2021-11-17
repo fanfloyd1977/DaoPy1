@@ -160,7 +160,7 @@ def handle_message(event):
             template=ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
-                        image_url='https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png',
+                        image_url='http://cdn.shopify.com/s/files/1/0463/7432/2326/products/gris_dior_1850x2000_e202a24d-57ef-413d-88bf-d816730e3c9e.jpg',
                         action=PostbackTemplateAction(
                             label='Ham Burger',
                             text='Ham Burger',
