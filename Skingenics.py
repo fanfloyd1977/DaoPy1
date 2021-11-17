@@ -178,9 +178,9 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url='https://cdn.shopify.com/s/files/1/0463/7432/2326/products/Y0996065_C099600577_E01_GHC_a2097cbc-72fb-4ad3-8e97-4ef73d13d18d.jpg',
                         action=PostbackTemplateAction(
-                            label='Hotdog',
-                            text='Hotdog',
-                            data='Hotdog'
+                            label='Eden',
+                            text='Eden',
+                            data='Eden'
                         )
                     )
                 ]
@@ -226,21 +226,21 @@ def handle_postback(event):
         Rosewood_Large_Row = [len(row),"Taco","Large",2000,1,profile.display_name,"New",profile.user_id]
         sheet.append_row(Rosewood_Large_Row)
 
-    if data == "Hotdog Regular":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Hotdog Regular : Submitted"))
+    if data == "Eden Regular":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Eden Regular : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Hot_Regular_Row = [len(row),"Hotdog","Regular",150,1,profile.display_name,"New",profile.user_id]
-        sheet.append_row(Hot_Regular_Row)
+        Eden_Regular_Row = [len(row),"Eden","Regular",1500,1,profile.display_name,"New",profile.user_id]
+        sheet.append_row(Eden_Regular_Row)
 
-    if data == "Hotdog Large":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Hotdog Large : Submitted"))
+    if data == "Eden Large":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Eden Large : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Hot_Large_Row = [len(row),"Hotdog","Large",200,1,profile.display_name,"New",profile.user_id]
-        sheet.append_row(Hot_Large_Row)
+        Eden_Large_Row = [len(row),"Eden","Large",2000,1,profile.display_name,"New",profile.user_id]
+        sheet.append_row(Eden_Large_Row)
 
 
     if data == "Table 1":
@@ -387,12 +387,12 @@ def handle_postback(event):
 
         message = FlexSendMessage(alt_text="Hello Flex", contents=bubble)
         line_bot_api.reply_message(event.reply_token,message)
-#Hotdog
-    if data == "Hotdog":
+#Eden
+    if data == "Eden":
         D_bubble = BubbleContainer(
             direction='ltr',
             hero=ImageComponent(
-                url="https://media3.s-nbcnews.com/i/newscms/2020_27/1586837/hotdogs-te-main-200702_1e1ea98797356fd7f729a2b294d7bb26.jpg",
+                url="https://cdn.shopify.com/s/files/1/0463/7432/2326/products/Y0996065_C099600577_E01_GHC_a2097cbc-72fb-4ad3-8e97-4ef73d13d18d.jpg",
                 size='full',
                 aspect_ratio='20:13',
                 aspect_mode='cover',
@@ -401,14 +401,14 @@ def handle_postback(event):
             body=BoxComponent(
                 layout="vertical",
                 contents=[
-                    TextComponent(text="Hotdog",weight="bold",size="xl"),
+                    TextComponent(text="Eden",weight="bold",size="xl"),
                     BoxComponent(
                         layout="baseline",margin="md",
                         contents=[
 
                             IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
-                            TextComponent(text="150 BHT",size="sm",color="#976608",margin="md"),
-                            TextComponent(text="450 kcl",size="sm",color="#976608",margin="md",align="end")
+                            TextComponent(text="1500 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="50 ml.",size="sm",color="#976608",margin="md",align="end")
 
                         ]
                     ),
@@ -416,15 +416,15 @@ def handle_postback(event):
                         layout="baseline",margin="md",
                         contents=[
                             IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"),
-                            TextComponent(text="200 BHT",size="sm",color="#976608",margin="md"),
-                            TextComponent(text="750 kcl",size="sm",color="#976608",margin="md",align="end")
+                            TextComponent(text="2000 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="100 ml.",size="sm",color="#976608",margin="md",align="end")
 
                         ]
 
                     ),
                     BoxComponent(
                         layout="vertical",margin="md",
-                        contents=[TextComponent(text="Sauce, Onions, Pickles, lettuce & Cheese",size="xxs",color="#999999",margin="md"),]
+                        contents=[TextComponent(text="Sea Salt, Citruses, Jasmine, Mastic & Coconut",size="xxs",color="#999999",margin="md"),]
                     )
                 ]
             ),
@@ -435,14 +435,14 @@ def handle_postback(event):
                         style="primary",
                         color= "#F98A76",
                         height="sm",
-                        action=PostbackAction(label="REGULAR", data="Hotdog Regular")
+                        action=PostbackAction(label="REGULAR", data="Eden Regular")
                         # URIAction(label="ORDER",uri="tel:00000000")
                     ),
                     ButtonComponent(
                         style="primary",
                         color= "#F98A76",
                         height="sm",
-                        action=PostbackAction(label="LARGE", data="Hotdog Large")
+                        action=PostbackAction(label="LARGE", data="Eden Large")
                     )
 
 
