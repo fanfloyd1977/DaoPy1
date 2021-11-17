@@ -223,7 +223,7 @@ def handle_postback(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Rosewood_Large_Row = [len(row),"Taco","Large",2000,1,profile.display_name,"New",profile.user_id]
+        Rosewood_Large_Row = [len(row),"Rosewood","Large",2000,1,profile.display_name,"New",profile.user_id]
         sheet.append_row(Rosewood_Large_Row)
 
     if data == "Eden Regular":
