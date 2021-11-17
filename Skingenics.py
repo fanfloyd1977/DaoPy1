@@ -170,9 +170,9 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url='https://cdn.shopify.com/s/files/1/0463/7432/2326/products/Y0996414_E01_GHC.jpg',
                         action=PostbackTemplateAction(
-                            label='Taco',
-                            text='Taco',
-                            data='Taco'
+                            label='Rosewood',
+                            text='Rosewood',
+                            data='Rosewood'
                         )
                     ),
                     ImageCarouselColumn(
@@ -198,7 +198,7 @@ def handle_postback(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Gris_Regular_Row = [len(row),"Gris","Regular",250,1,profile.display_name,"New",profile.user_id]
+        Gris_Regular_Row = [len(row),"Gris","Regular",2500,1,profile.display_name,"New",profile.user_id]
         sheet.append_row(Gris_Regular_Row)
 
     if data == "Gris Large":
@@ -206,25 +206,25 @@ def handle_postback(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Gris_Large_Row = [len(row),"Gris","Large",450,1,profile.display_name,"New",profile.user_id]
+        Gris_Large_Row = [len(row),"Gris","Large",4500,1,profile.display_name,"New",profile.user_id]
         sheet.append_row(Gris_Large_Row)
 
 
-    if data == "Taco Regular":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Taco Regular : Submitted"))
+    if data == "Rosewood Regular":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Rosewood Regular : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Taco_Regular_Row = [len(row),"Taco","Regular",100,1,profile.display_name,"New",profile.user_id]
-        sheet.append_row(Taco_Regular_Row)
+        Rosewood_Regular_Row = [len(row),"Rosewood","Regular",1000,1,profile.display_name,"New",profile.user_id]
+        sheet.append_row(Rosewood_Regular_Row)
 
-    if data == "Taco Large":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Taco Large : Submitted"))
+    if data == "Rosewood Large":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Rosewood Large : Submitted"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Taco_Large_Row = [len(row),"Taco","Large",200,1,profile.display_name,"New",profile.user_id]
-        sheet.append_row(Taco_Large_Row)
+        Rosewood_Large_Row = [len(row),"Taco","Large",2000,1,profile.display_name,"New",profile.user_id]
+        sheet.append_row(Rosewood_Large_Row)
 
     if data == "Hotdog Regular":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Hotdog Regular : Submitted"))
@@ -257,12 +257,12 @@ def handle_postback(event):
 
     #Flex message
 
-#Taco
-    if data == "Taco":
+#Rosewood
+    if data == "Rosewood":
         T_bubble = BubbleContainer(
             direction='ltr',
             hero=ImageComponent(
-                url="https://images-gmi-pmc.edge-generalmills.com/e59f255c-7498-4b84-9c9d-e578bf5d88fc.jpg",
+                url="https://cdn.shopify.com/s/files/1/0463/7432/2326/products/Y0996414_E01_GHC.jpg",
                 size='full',
                 aspect_ratio='20:13',
                 aspect_mode='cover',
@@ -271,14 +271,14 @@ def handle_postback(event):
             body=BoxComponent(
                 layout="vertical",
                 contents=[
-                    TextComponent(text="Taco",weight="bold",size="xl"),
+                    TextComponent(text="Rosewood",weight="bold",size="xl"),
                     BoxComponent(
                         layout="baseline",margin="md",
                         contents=[
 
                             IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
-                            TextComponent(text="100 BHT",size="sm",color="#976608",margin="md"),
-                            TextComponent(text="450 kcl",size="sm",color="#976608",margin="md",align="end")
+                            TextComponent(text="1000 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="50 ml.",size="sm",color="#976608",margin="md",align="end")
 
                         ]
                     ),
@@ -286,15 +286,15 @@ def handle_postback(event):
                         layout="baseline",margin="md",
                         contents=[
                             IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"),
-                            TextComponent(text="200 BHT",size="sm",color="#976608",margin="md"),
-                            TextComponent(text="750 kcl",size="sm",color="#976608",margin="md",align="end")
+                            TextComponent(text="2000 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="100 ml.",size="sm",color="#976608",margin="md",align="end")
 
                         ]
 
                     ),
                     BoxComponent(
                         layout="vertical",margin="md",
-                        contents=[TextComponent(text="Sauce, Onions, Pickles, lettuce & Cheese",size="xxs",color="#999999",margin="md"),]
+                        contents=[TextComponent(text="Raspberry, Quince, Pickles, Sandalwood",size="xxs",color="#999999",margin="md"),]
                     )
                 ]
             ),
@@ -305,14 +305,14 @@ def handle_postback(event):
                         style="primary",
                         color= "#DFD805",
                         height="sm",
-                        action=PostbackAction(label="REGULAR", data="Taco Regular")
+                        action=PostbackAction(label="REGULAR", data="Rosewood Regular")
                         # URIAction(label="ORDER",uri="tel:00000000")
                     ),
                     ButtonComponent(
                         style="primary",
                         color= "#DFD805",
                         height="sm",
-                        action=PostbackAction(label="LARGE", data="Taco Large")
+                        action=PostbackAction(label="LARGE", data="Rosewood Large")
                     )
 
 
@@ -343,7 +343,7 @@ def handle_postback(event):
 
                             IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
                             TextComponent(text="250 BHT",size="sm",color="#976608",margin="md"),
-                            TextComponent(text="450 kcl",size="sm",color="#976608",margin="md",align="end")
+                            TextComponent(text="50 ml.",size="sm",color="#976608",margin="md",align="end")
 
                         ]
                     ),
@@ -351,15 +351,15 @@ def handle_postback(event):
                         layout="baseline",margin="md",
                         contents=[
                             IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"),
-                            TextComponent(text="450 BHT",size="sm",color="#976608",margin="md"),
-                            TextComponent(text="750 kcl",size="sm",color="#976608",margin="md",align="end")
+                            TextComponent(text="4500 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="100 ml.",size="sm",color="#976608",margin="md",align="end")
 
                         ]
 
                     ),
                     BoxComponent(
                         layout="vertical",margin="md",
-                        contents=[TextComponent(text="Bergamot, Turkish rose, Patchouli, Jasmine sambac & Amber",size="xxs",color="#999999",margin="md"),]
+                        contents=[TextComponent(text="Bergamot, Turkish rose, Patchouli, Amber",size="xxs",color="#999999",margin="md"),]
                     )
                 ]
             ),
