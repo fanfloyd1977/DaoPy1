@@ -168,7 +168,7 @@ def handle_message(event):
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://images-gmi-pmc.edge-generalmills.com/e59f255c-7498-4b84-9c9d-e578bf5d88fc.jpg',
+                        image_url='https://cdn.shopify.com/s/files/1/0463/7432/2326/products/Y0996414_E01_GHC.jpg',
                         action=PostbackTemplateAction(
                             label='Taco',
                             text='Taco',
@@ -176,7 +176,7 @@ def handle_message(event):
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://media3.s-nbcnews.com/i/newscms/2020_27/1586837/hotdogs-te-main-200702_1e1ea98797356fd7f729a2b294d7bb26.jpg',
+                        image_url='https://cdn.shopify.com/s/files/1/0463/7432/2326/products/Y0996065_C099600577_E01_GHC_a2097cbc-72fb-4ad3-8e97-4ef73d13d18d.jpg',
                         action=PostbackTemplateAction(
                             label='Hotdog',
                             text='Hotdog',
