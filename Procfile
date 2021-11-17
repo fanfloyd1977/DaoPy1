@@ -1,1 +1,1 @@
-web: gunicorn bot6:app
+web: gunicorn Skingenics:app
