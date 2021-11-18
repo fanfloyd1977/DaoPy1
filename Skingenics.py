@@ -360,7 +360,8 @@ def handle_postback(event):
                     #),
                     BoxComponent(
                         layout="vertical",margin="md",
-                        contents=[TextComponent(text="Bergamot, Turkish rose, Patchouli, Amber",size="xxs",color="#999999",margin="md"),TextComponent(text="Bergamot2, Turkish rose, Patchouli, Amber",size="xxs",color="#999999",margin="md"),]
+                        contents=[TextComponent(text="Bergamot, Turkish rose, Patchouli, Amber",size="xxs",color="#999999",margin="md"),
+                                  TextComponent(text="Oakmoss, Cedar, Sandalwood",size="xxs",color="#999999",margin="md"),]
                     )
                 ]
             ),
@@ -373,13 +374,13 @@ def handle_postback(event):
                         height="sm",
                         action=PostbackAction(label="REGULAR", data="Gris Regular")
                         # URIAction(label="ORDER",uri="tel:00000000")
-                    ),
-                    ButtonComponent(
-                        style="primary",
-                        color= "#905c44",
-                        height="sm",
-                        action=PostbackAction(label="LARGE", data="Gris Large")
                     )
+                    #ButtonComponent(
+                        #style="primary",
+                        #color= "#905c44",
+                        #height="sm",
+                        #action=PostbackAction(label="LARGE", data="Gris Large")
+                    #)
 
 
                 ]
