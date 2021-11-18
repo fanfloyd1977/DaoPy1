@@ -360,7 +360,7 @@ def handle_postback(event):
                     #),
                     BoxComponent(
                         layout="vertical",margin="md",
-                        contents=[TextComponent(text="Bergamot, Turkish rose, Patchouli, Amber",size="xxs",color="#999999",margin="md"),]
+                        contents=[TextComponent(text="Bergamot, Turkish rose, Patchouli, Amber",size="xxs",color="#999999",margin="md"),TextComponent(text="Bergamot2, Turkish rose, Patchouli, Amber",size="xxs",color="#999999",margin="md"),]
                     )
                 ]
             ),
