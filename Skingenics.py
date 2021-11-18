@@ -194,7 +194,7 @@ def handle_message(event):
 def handle_postback(event):
     data = event.postback.data
     if data == "Gris Regular":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ต้องการสั่งสินค้า Gris Dior ขนาด 50 ml. โอนเงินชำระค่าสินค้าได้ที่ SCB 049-xxxx"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ต้องการสั่งสินค้า Gris Dior ขนาด 50 ml. โอนเงินชำระค่าสินค้าได้ที่ \n SCB 049-1234-5678 \n ฑัมพร วยาจุต"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
