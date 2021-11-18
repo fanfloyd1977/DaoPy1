@@ -194,7 +194,7 @@ def handle_message(event):
 def handle_postback(event):
     data = event.postback.data
     if data == "Gris Regular":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ต้องการสั่งสินค้า Gris Dior ขนาด Regular โอนเงินชำระค่าสินค้า SCB xxxx"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ต้องการสั่งสินค้า Gris Dior ขนาด 50 ml. โอนเงินชำระค่าสินค้า SCB xxxx"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
@@ -372,7 +372,7 @@ def handle_postback(event):
                         style="primary",
                         color= "#905c44",
                         height="sm",
-                        action=PostbackAction(label="REGULAR", data="Gris Regular")
+                        action=PostbackAction(label="ORDER", data="Gris Regular")
                         # URIAction(label="ORDER",uri="tel:00000000")
                     )
                     #ButtonComponent(
