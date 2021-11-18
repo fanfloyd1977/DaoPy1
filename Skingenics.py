@@ -1,6 +1,6 @@
 import time
 import schedule
-
+from datetime import datetime
 from pandas import pandas as pd
 
 from random import randrange
@@ -198,7 +198,7 @@ def handle_postback(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Gris_Regular_Row = [len(row),"Gris","Regular",2500,1,profile.display_name,"New",profile.user_id,event.timestamp]
+        Gris_Regular_Row = [len(row),"Gris","Regular",2500,1,profile.display_name,"New",profile.user_id,datetime.fromtimestamp(event.timestamp)]
         sheet.append_row(Gris_Regular_Row)
 
     if data == "Gris Large":
