@@ -347,16 +347,17 @@ def handle_postback(event):
 
                         ]
                     ),
-                    BoxComponent(
-                        layout="baseline",margin="md",
-                        contents=[
-                            IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"),
-                            TextComponent(text="4500 BHT",size="sm",color="#976608",margin="md"),
-                            TextComponent(text="100 ml.",size="sm",color="#976608",margin="md",align="end")
+                    
+                    # BoxComponent(
+                    #    layout="baseline",margin="md",
+                    #    contents=[
+                    #        IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"),
+                    #        TextComponent(text="4500 BHT",size="sm",color="#976608",margin="md"),
+                    #        TextComponent(text="100 ml.",size="sm",color="#976608",margin="md",align="end")
 
-                        ]
+                    #    ]
 
-                    ),
+                    #),
                     BoxComponent(
                         layout="vertical",margin="md",
                         contents=[TextComponent(text="Bergamot, Turkish rose, Patchouli, Amber",size="xxs",color="#999999",margin="md"),]
