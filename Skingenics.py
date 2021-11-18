@@ -32,7 +32,7 @@ client = gspread.authorize(creds)
 
 
 #Intent
-greeting = ["Hello Hello","Hi Hi", "Hi", "Hi, there", "Good day", "สวัสดีครับ", "สวัสดีค่ะ ยินดีต้อนรับค่ะ", "สวัสดีค่ะ"]
+greeting = ["Hello", "Hi", "Hi, there", "Good day", "Hello", "ยินดีต้อนรับค่ะ", "สวัสดีค่ะ"]
 N = 1
 
 @app.route("/")
@@ -194,7 +194,7 @@ def handle_message(event):
 def handle_postback(event):
     data = event.postback.data
     if data == "Gris Regular":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="Gris regular : Submitted"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ต้องการสั่งสินค้า Gris Dior ขนาด Regular", "โอนเงินชำระค่าสินค้า SCB xxxx"))
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
