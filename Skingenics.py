@@ -198,7 +198,6 @@ def handle_postback(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        datetime = (datetime.fromtimestamp(event.timestamp) - timedelta(hours=2)).strftime('%Y-%m-%d %H:%M:%S')
         Gris_Regular_Row = [len(row),"Gris","Regular",2500,1,profile.display_name,"New",profile.user_id,event.timestamp]
         sheet.append_row(Gris_Regular_Row)
 
