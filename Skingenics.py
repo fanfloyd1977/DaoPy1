@@ -198,7 +198,7 @@ def handle_postback(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Gris_Regular_Row = [len(row),"Gris","Regular",2500,1,profile.display_name,"New",profile.user_id,now()]
+        Gris_Regular_Row = [len(row),"Gris","Regular",2500,1,profile.display_name,"New",profile.user_id,"=now()"]
         sheet.append_row(Gris_Regular_Row)
 
     if data == "Gris Large":
