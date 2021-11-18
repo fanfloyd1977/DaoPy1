@@ -176,7 +176,7 @@ def handle_message(event):
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://github.com/fanfloyd1977/DaoPy1/blob/master/Mock1.JPG',
+                        image_url='https://cdn.shopify.com/s/files/1/0463/7432/2326/products/Y0996065_C099600577_E01_GHC_a2097cbc-72fb-4ad3-8e97-4ef73d13d18d.jpg',
                         action=PostbackTemplateAction(
                             label='Eden',
                             text='Eden',
