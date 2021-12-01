@@ -329,7 +329,7 @@ def handle_postback(event):
             hero=ImageComponent(
                 url="https://static.wixstatic.com/media/29a6d2_121dbcd5fb1540eb8bf01605139638df~mv2.jpg",
                 size='full',
-                aspect_ratio='20:13',
+                aspect_ratio='20:20',
                 aspect_mode='cover',
                 action=URIAction(uri='http://example.com', label='label')
             ),
