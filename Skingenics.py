@@ -160,7 +160,7 @@ def handle_message(event):
             template=ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
-                        image_url='https://cdn.shopify.com/s/files/1/0463/7432/2326/products/gris_dior_1850x2000_e202a24d-57ef-413d-88bf-d816730e3c9e.jpg',
+                        image_url='https://www.instagram.com/p/CW7zEVuPAUd/?utm_source=ig_web_copy_link',
                         action=PostbackTemplateAction(
                             label='Gris',
                             text='Gris',
