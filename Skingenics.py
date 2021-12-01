@@ -171,6 +171,8 @@ def handle_message(event):
                     ),
                     ImageCarouselColumn(
                         image_url='https://static.wixstatic.com/media/29a6d2_2f78d1db13e6405681fcdd298267e1ca~mv2.jpg',
+                         size='full',
+                         aspect_ratio='50:20',
                         action=PostbackTemplateAction(
                             label='Rosewood',
                             text='Rosewood',
