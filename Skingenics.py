@@ -161,6 +161,8 @@ def handle_message(event):
                 columns=[
                     ImageCarouselColumn(
                         image_url='https://static.wixstatic.com/media/29a6d2_121dbcd5fb1540eb8bf01605139638df~mv2.jpg',
+                         size='full',
+                         aspect_ratio='25:20',
                         action=PostbackTemplateAction(
                             label='Orangecello',
                             text='Orangecello',
@@ -198,7 +200,7 @@ def handle_postback(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Orangecello_Regular_Row = [len(row),"Orangecello","Regular",2500,1,profile.display_name,"New",profile.user_id,event.timestamp]
+        Orangecello_Regular_Row = [len(row),"Orangecello","Regular",490,1,profile.display_name,"New",profile.user_id,event.timestamp]
         sheet.append_row(Orangecello_Regular_Row)
 
     if data == "Orangecello Large":
@@ -206,7 +208,7 @@ def handle_postback(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         sheet = client.open("Booktwo").sheet1
         row = sheet.col_values(1)
-        Orangecello_Large_Row = [len(row),"Orangecello","Large",4500,1,profile.display_name,"New",profile.user_id]
+        Orangecello_Large_Row = [len(row),"Orangecello","Large",890,1,profile.display_name,"New",profile.user_id]
         sheet.append_row(Orangecello_Large_Row)
 
 
@@ -329,7 +331,7 @@ def handle_postback(event):
             hero=ImageComponent(
                 url="https://static.wixstatic.com/media/29a6d2_121dbcd5fb1540eb8bf01605139638df~mv2.jpg",
                 size='full',
-                aspect_ratio='20:20',
+                aspect_ratio='25:20',
                 aspect_mode='cover',
                 action=URIAction(uri='http://example.com', label='label')
             ),
@@ -342,8 +344,8 @@ def handle_postback(event):
                         contents=[
 
                             IconComponent(size="sm",url="https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"),
-                            TextComponent(text="250 BHT",size="sm",color="#976608",margin="md"),
-                            TextComponent(text="50 ml.",size="sm",color="#976608",margin="md",align="end")
+                            TextComponent(text="490 BHT",size="sm",color="#976608",margin="md"),
+                            TextComponent(text="30 ml.",size="sm",color="#976608",margin="md",align="end")
 
                         ]
                     ),
@@ -360,8 +362,8 @@ def handle_postback(event):
                     #),
                     BoxComponent(
                         layout="vertical",margin="md",
-                        contents=[TextComponent(text="Orange, Grapefruit, Peach, Musk",size="xxs",color="#999999",margin="md"),
-                                  TextComponent(text="Green, Cedar wood, Ginger",size="xxs",color="#999999",margin="md"),]
+                        contents=[TextComponent(text="Sweet Almond, Abyssinian, Avocado, Coconut",size="xxs",color="#999999",margin="md"),
+                                  TextComponent(text="Pomegranate Seed, Rosehip, Squalane",size="xxs",color="#999999",margin="md"),]
                     )
                 ]
             ),
