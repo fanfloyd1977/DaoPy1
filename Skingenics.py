@@ -160,7 +160,7 @@ def handle_message(event):
             template=ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
-                        image_url='https://instagram.fbkk22-3.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/261953661_3113907675533139_6477458637781430303_n.jpg?_nc_ht=instagram.fbkk22-3.fna.fbcdn.net&_nc_cat=103&_nc_ohc=WEAC89OG8jIAX_Bzk3W&edm=AABBvjUBAAAA&ccb=7-4&oh=673cfae7e874f3fd243ab2327a919194&oe=61AD31FD&_nc_sid=83d603',
+                        image_url='https://static.wixstatic.com/media/29a6d2_121dbcd5fb1540eb8bf01605139638df~mv2.jpg',
                         action=PostbackTemplateAction(
                             label='Gris',
                             text='Gris',
