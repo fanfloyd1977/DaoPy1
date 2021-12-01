@@ -160,7 +160,7 @@ def handle_message(event):
             template=ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
-                        image_url='https://www.instagram.com/p/CW7zEVuPAUd/?utm_source=ig_web_copy_link',
+                        image_url='https://www.instagram.com/p/CW7zEVuPAUd/media/?size=l',
                         action=PostbackTemplateAction(
                             label='Gris',
                             text='Gris',
