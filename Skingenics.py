@@ -168,7 +168,7 @@ def handle_message(event):
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://cdn.shopify.com/s/files/1/0463/7432/2326/products/Y0996414_E01_GHC.jpg',
+                        image_url='https://static.wixstatic.com/media/29a6d2_2f78d1db13e6405681fcdd298267e1ca~mv2.jpg',
                         action=PostbackTemplateAction(
                             label='Rosewood',
                             text='Rosewood',
@@ -176,7 +176,7 @@ def handle_message(event):
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://cdn.shopify.com/s/files/1/0463/7432/2326/products/Y0996065_C099600577_E01_GHC_a2097cbc-72fb-4ad3-8e97-4ef73d13d18d.jpg',
+                        image_url='https://static.wixstatic.com/media/29a6d2_dbf5ab5f676f4d6c812c91f9fc7c9fa7~mv2.jpg',
                         action=PostbackTemplateAction(
                             label='Eden',
                             text='Eden',
